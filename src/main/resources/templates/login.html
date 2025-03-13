@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Enlace a la hoja de estilos CSS usando Thymeleaf -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Contenedor del formulario de inicio de sesión -->
+        <div class="container-form">
+            <form class="sign-in">
+                <h2>Iniciar Sesión</h2>
+                <span class="instruction-text">Use su RUN y contraseña</span>
+                <!-- Campo de entrada para el RUN -->
+                <div class="container-input"> 
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input type="text" placeholder="RUN" id="">
+                </div>
+                <!-- Campo de entrada para la contraseña -->
+                <div class="container-input"> 
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" placeholder="Password" id="">
+                </div>
+                <!-- Botón para iniciar sesión -->
+                <button class="button">INICIAR SESIÓN</button> 
+                <!-- Enlace para recuperar la contraseña -->
+                <a href="#" class="forgot-password">Olvidé mi contraseña</a>
+            </form>
+        </div>
+    </div>
+    <!-- Enlace al archivo JavaScript -->
+    <script src="/js/scripts.js"></script>
+    <!-- Enlace a los iconos de Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

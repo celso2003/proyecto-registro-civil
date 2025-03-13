@@ -1,0 +1,86 @@
+.form-datos {
+    display: grid; /* Utiliza grid layout para el diseño */
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual ancho */
+    gap: 7px; /* Espacio entre las celdas */
+    width: 50%; /* Ancho del formulario */
+    background: #2e86c1; /* Color de fondo */
+    padding: 20px; /* Padding interno */
+    margin-left: auto; /* Centra el formulario horizontalmente */
+    margin-right: 295px; /* Ajusta el margen derecho */
+    margin-top: 100px; /* Margen superior */
+    border-radius: 4px; /* Bordes redondeados */
+    height: 668px; /* Altura del formulario */
+    color: white; /* Color del texto */
+}
+
+.form-datos h4 {
+    grid-column: span 2; /* El título ocupa dos columnas */
+    font-size: 20px; /* Tamaño de la fuente */
+    margin-bottom: 20px; /* Margen inferior */
+    text-align: center; /* Alineación del texto */
+}
+
+.form-datos label {
+    grid-column: 1; /* Los labels en la primera columna */
+    align-self: center; /* Centra verticalmente los labels */
+    font-size: 18px; /* Tamaño de la fuente */
+}
+
+.form-datos .controls {
+    grid-column: 2; /* Los inputs en la segunda columna */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    background: white; /* Color de fondo */
+    border-radius: 4px; /* Bordes redondeados */
+    border: 1px solid #1f53c5; /* Borde */
+    font-family: 'calibri'; /* Fuente */
+    font-size: 20px; /* Tamaño de la fuente */
+    color: rgba(39, 37, 37, 0.836); /* Color del texto */
+    padding: 10px; /* Padding interno */
+    height: 40px; /* Altura */
+}
+
+.form-datos .controls::placeholder {
+    color: rgba(39, 37, 37, 0.836); /* Color del texto del placeholder */
+    opacity: 1; /* Opacidad */
+}
+
+.form-datos input[type="submit"] {
+    grid-column: 2; /* El botón ocupa la segunda columna */
+    width: 50%; /* Ancho del botón */
+    height: 50px; /* Altura del botón */
+    background: white; /* Color de fondo */
+    color: rgba(39, 37, 37, 0.836); /* Color del texto */
+    font-size: 18px; /* Tamaño de la fuente */
+    border: 2px solid #1f54c5ba; /* Borde */
+    border-radius: 7px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    margin-top: 10px; /* Margen superior */
+    margin-left: auto; /* Alinea el botón a la derecha dentro de la columna */
+}
+
+.botons {
+    display: inline-block; /* Muestra el botón como un bloque en línea */
+    padding: 10px 20px; /* Padding interno */
+    background-color: #ffffff; /* Color de fondo */
+    color: rgb(31, 30, 30); /* Color del texto */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Elimina la decoración del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    width: 50%; /* Ancho del botón */
+    margin-top: 15px; /* Margen superior */
+    margin-left: auto; /* Alinea el botón a la derecha dentro de la columna */
+    grid-column: 2; /* El botón ocupa la segunda columna */
+}
+
+.botons:hover {
+    background-color: #e3eef8d7; /* Color de fondo al pasar el cursor */
+}
+
+
+
+
+
+

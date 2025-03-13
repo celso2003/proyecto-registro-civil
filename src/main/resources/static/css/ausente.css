@@ -1,0 +1,342 @@
+* {
+    box-sizing: border-box; /* Incluir padding y border en el tamaño total del elemento */
+    margin: 0; /* Eliminar margen por defecto */
+    padding: 0; /* Eliminar padding por defecto */
+    font-family: "Poppins", sans-serif; /* Establecer la fuente global */
+}
+
+/* Definición de variables CSS */
+:root {
+    --color-bg: #aed6f1; /* Color de fondo */
+    --color-surface: #2980b9; /* Color de superficie */
+    --color-border: #9A9EB2; /* Color de borde */
+    --color-text-primary: #000; /* Color de texto primario */
+    --color-text-secondary: #3F435D; /* Color de texto secundario */
+    --color-tooltip-bg: #2A2E33; /* Color de fondo de tooltip */
+    --color-tooltip-text: #fff; /* Color de texto de tooltip */
+    --shadow-border: rgba(0, 0, 0, 0.1); /* Sombra de borde */
+    --user-bg-color: #FAFAFC; /* Color de fondo de usuario */
+    --sidebar-width: 20rem; /* Ancho de la barra lateral */
+}
+
+/* Estilo del cuerpo */
+body {
+    display: flex; /* Usar flexbox para el layout */
+    width: 100%; /* Ancho completo */
+    height: 100vh; /* Altura completa de la ventana */
+    background-color: var(--color-bg); /* Usar variable de color de fondo */
+}
+
+/* Estilo de la barra lateral */
+.sidebar {
+    border-right: 2px solid #eaf2f8; /* Borde derecho */
+    position: fixed; /* Fijar posición */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Colocar elementos en columna */
+    align-items: left; /* Alinear elementos a la izquierda */
+    justify-content: space-between; /* Espacio entre elementos */
+    width: var(--sidebar-width); /* Usar variable de ancho */
+    height: 100%; /* Altura completa */
+    padding: 1.4rem 1rem 0 1rem; /* Padding interno */
+    background-color: var(--color-surface); /* Usar variable de color de superficie */
+    box-shadow: 1px 0 10px var(--shadow-border); /* Sombra */
+    transition: width 0.5s ease; /* Transición de ancho */
+}
+
+/* Estilo de la barra lateral minimizada */
+.sidebar.minimize {
+    width: 6rem; /* Ancho reducido */
+}
+
+/* Estilo del encabezado */
+.header {
+    width: 100%; /* Ancho completo */
+}
+
+/* Estilo del botón de menú */
+.menu-btn i {
+    font-size: 1.5rem; /* Tamaño de fuente */
+    color: white; /* Color blanco */
+}
+
+/* Estilo de la marca */
+.brand {
+    width: 100%; /* Ancho completo */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear elementos al centro */
+    gap: 0.7rem; /* Espacio entre elementos */
+    padding: 0.455rem; /* Padding interno */
+    margin-bottom: 1.8rem; /* Margen inferior */
+    overflow: hidden; /* Ocultar desbordamiento */
+}
+
+/* Estilo de la imagen de la marca */
+.brand img {
+    border: 3px solid white; /* Borde blanco */
+    width: 9rem; /* Ancho de la imagen */
+    margin-left: -0.3rem; /* Margen izquierdo negativo */
+}
+
+/* Estilo del texto de la marca */
+.brand span {
+    font-size: 1.1rem; /* Tamaño de fuente */
+    font-weight: 600; /* Peso de fuente */
+    color: white; /* Color blanco */
+}
+
+/* Contenedor del menú */
+.menu-container {
+    display: flex; /* Usar flexbox */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    flex-direction: column; /* Colocar elementos en columna */
+    align-items: flex-start; /* Alinear elementos al inicio */
+    padding-right: 0.5rem; /* Padding derecho */
+}
+
+/* Estilo del buscador */
+.search {
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear elementos al centro */
+    width: calc(100% - 1rem); /* Ancho calculado */
+    padding: 0.5rem 0; /* Padding interno */
+    margin-bottom: 1.2rem; /* Margen inferior */
+    border-radius: 0.3rem; /* Bordes redondeados */
+    box-shadow: 0 0 0 1px; /* Sombra */
+    cursor: pointer; /* Cambiar cursor a puntero */
+    transition: box-shadow 0.5s ease; /* Transición de sombra */
+    margin-left: 1rem; /* Margen izquierdo */
+    color: white; /* Color blanco */
+}
+
+/* Hover del buscador */
+.search:hover {
+    box-shadow: 0 0 0 1px; /* Sombra */
+    color: white; /* Color blanco */
+}
+
+/* Estilo del botón de cancelar búsqueda */
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none; /* Eliminar apariencia por defecto */
+    height: 16px; /* Altura */
+    width: 16px; /* Ancho */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>') no-repeat center center; /* Imagen de fondo */
+}
+
+/* Estilo del icono de búsqueda */
+.search i {
+    font-size: 1.35rem; /* Tamaño de fuente */
+    color: white; /* Color blanco */
+    padding: 0 0.8rem; /* Padding interno */
+    margin-left: -0.3rem; /* Margen izquierdo negativo */
+}
+
+/* Hover del icono de búsqueda */
+.search:hover i {
+    color: white; /* Color blanco */
+}
+
+/* Estilo del placeholder del input */
+input::placeholder {
+    color: white; /* Color blanco */
+}
+
+/* Estilo del input de búsqueda */
+.search input {
+    width: 70%; /* Ancho */
+    border: none; /* Sin borde */
+    outline: none; /* Sin contorno */
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Color blanco */
+}
+
+/*menu*/
+.menu {
+    width: 100%; /* Ancho completo */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Colocar elementos en columna */
+    gap: 0.5rem; /* Espacio entre elementos */
+    color: white; /* Color blanco */
+}
+
+.menu .menu-item {
+    position: relative; /* Posición relativa */
+    list-style: none; /* Sin estilo de lista */
+    overflow: hidden; /* Ocultar desbordamiento */
+}
+
+.menu .menu-link {
+    display: flex; /* Usar flexbox */
+    padding: 0.55rem 0; /* Padding interno */
+    color: white; /* Color blanco */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 0.3rem; /* Bordes redondeados */
+    margin-left: 2rem; /* Margen izquierdo */
+}
+
+.menu-item:hover .menu-link, 
+.sub-menu .sub-menu-link:hover {
+    color: var(--color-text-primary); /* Usar variable de color de texto primario */
+    background-color: var(--color-bg); /* Usar variable de color de fondo */
+}
+
+.menu .menu-link i {
+    font-size: 1.35rem; /* Tamaño de fuente */
+    padding: 0 0.83rem; /* Padding interno */
+}
+
+.menu-link i:last-child {
+    margin-left: auto; /* Margen izquierdo automático */
+}
+
+.menu-item.sub-menu-toggle .menu-link i:last-child {
+    transform: rotate(180deg); /* Rotar 180 grados */
+}
+
+.menu-item.sub-menu-toggled .menu-link i:last-child {
+    transform: rotate(180deg); /* Rotar 180 grados */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+.menu-link span {
+    font-size: 0.8rem; /* Tamaño de fuente */
+    font-weight: 500; /* Peso de fuente */
+}
+
+/*sub-menu*/
+.sub-menu {
+    height: 0; /* Altura inicial */
+    transition: all 0.3s ease; /* Transición suave */
+    margin-left: 4.5rem; /* Margen izquierdo */
+}
+
+.sub-menu .sub-menu-link {
+    display: flex; /* Usar flexbox */
+    margin-left: 0rem; /* Sin margen izquierdo */
+    padding: 0.55rem 0.50rem; /* Padding interno */
+    font-size: 0.75rem; /* Tamaño de fuente */
+    font-weight: 500; /* Peso de fuente */
+    color: white; /* Color blanco */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 0.3rem; /* Bordes redondeados */
+}
+
+.sub-menu::before {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posición absoluta */
+    height: 100%; /* Altura completa */
+    width: 0.07rem; /* Ancho */
+    margin-left: -0.9rem; /* Margen izquierdo negativo */
+    background-color: var(--color-border); /* Usar variable de color de borde */
+}
+
+.sidebar.minimize .menu .menu-link {
+    margin-left: 1rem; /* Margen izquierdo reducido */
+}
+
+.barra-superior {
+    border-bottom: 2px solid #eaf2f8; /* Borde inferior */
+    position: fixed; /* Fijar posición */
+    top: 0px; /* Posición superior */
+    left: 320px; /* Posición izquierda */
+    right: 0; /* Posición derecha */
+    max-width: calc(100% - 320px); /* Ancho máximo calculado */
+    background: #2e86c1; /* Color de fondo */
+    color: white; /* Color blanco */
+    padding: 30px 20px; /* Padding interno */
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Alinear elementos al centro */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra */
+    z-index: 1000; /* Nivel de apilamiento */
+}
+
+.info-usuario {
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear elementos al centro */
+    margin-left: auto; /* Margen izquierdo automático */
+    margin-top: -5px; /* Margen superior negativo */
+}
+
+.nombre-completo span {
+    margin-right: 200px; /* Margen derecho */
+    flex-direction: column; /* Colocar elementos en columna */
+    align-items: flex-start; /* Alinear elementos al inicio */
+    display: flex; /* Usar flexbox */
+    margin-top: -20px; /* Margen superior negativo */
+}
+
+.usuario {
+    font-size: 1rem; /* Tamaño de fuente */
+    margin-bottom: 16px; /* Margen inferior */
+}
+
+.nombre {
+    font-size: 1rem; /* Tamaño de fuente */
+    margin-bottom: 16px; /* Margen inferior */
+    margin-top: 16px; /* Margen superior */
+}
+
+.fecha {
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: normal; /* Peso de fuente normal */
+    margin-bottom: -20px; /* Margen inferior negativo */
+}
+
+.container {
+    position: absolute; /* Posición absoluta */
+    top: 0; /* Posición superior */
+    left: var(--sidebar-width); /* Usar variable de ancho de barra lateral */
+    right: 0; /* Posición derecha */
+    padding: 100px; /* Padding interno */
+    margin-top: 900px; /* Margen superior */
+}
+
+.formulario-ausente {
+    width: 800px; /* Ancho */
+    background: #2e86c1; /* Color de fondo */
+    padding: 90px; /* Padding interno */
+    margin: auto; /* Margen automático */
+    margin-top: 110px; /* Margen superior */
+    margin-left: 350px; /* Margen izquierdo */
+    border-radius: 4px; /* Bordes redondeados */
+    color: white; /* Color blanco */
+    overflow: hidden; /* Ocultar desbordamiento */
+    height: auto; /* Altura automática */
+}
+
+.formulario-ausente h4 {
+    font-size: 30px; /* Tamaño de fuente */
+    margin-bottom: 20px; /* Margen inferior */
+    margin-top: -80px; /* Margen superior negativo */
+    text-align: center; /* Alinear texto al centro */
+}
+
+.controls {
+    width: 100%; /* Ancho completo */
+    background: white; /* Color de fondo */
+    padding: 10px; /* Padding interno */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-bottom: 7px; /* Margen inferior */
+    border: 1px solid white; /* Borde */
+    pointer-events: auto; /* Permitir eventos de puntero */
+    color: black; /* Color del texto */
+}
+
+.formulario-ausente .botons {
+    width: 20%; /* Ancho */
+    background: white; /* Color de fondo */
+    border: none; /* Sin borde */
+    padding: 12px; /* Padding interno */
+    color: white; /* Color blanco */
+    font-size: 16px; /* Tamaño de fuente */
+    color: black; /* Color del texto */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-top: 40px; /* Margen superior */
+}
+
+textarea.controls {
+    resize: vertical; /* Permitir redimensionar solo verticalmente */
+    width: 100%; /* Ancho completo */
+}
+

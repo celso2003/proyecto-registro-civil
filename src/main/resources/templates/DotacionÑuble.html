@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dotación Ñuble</title>
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="/css/DotacionÑuble.css">
+    <!-- Enlace a los iconos de Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="/static/js/DotacionÑuble.js"></script>
+</head>
+<body> 
+    <!-- Barra superior con información del usuario -->
+    <div class="barra-superior">
+        <div class="info-usuario">
+            <span class="nombre-completo">
+                <span class="usuario"> Usuario:</span>
+                <span class="nombre"> Nombre:</span>
+                <span class="fecha"> Fecha:</span>
+            </span>
+        </div>
+    </div>
+         
+    <!-- Barra lateral (sidebar) -->
+    <div class="sidebar" id="sidebar">
+        <div class="header">
+            <!-- Botón del menú -->
+            <div class="menu-btn" id="menu-btn"></div> 
+            <!-- Marca con el logo y el nombre de la institución -->
+            <div class="brand">
+                <img src="/imagenes/LogoRegistroCivil.png" alt="logo">
+                <span>Registro Civil De Ñuble</span>
+            </div>
+        </div>
+        
+        <!-- Contenedor del menú -->
+        <div class="menu-container">
+            <!-- Barra de búsqueda -->
+            <div class="search">
+                <i class='bx bx-search'></i>
+                <input type="search" placeholder="Buscar...">
+            </div>
+            <!-- Menú de navegación -->
+            <ul class="menu">
+                <!-- Elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Inicio</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/inicio" class="sub-menu-link">Inicio<a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Informe Diario</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/formulario" class="sub-menu-link">Informe diario</a></li>
+                        <li><a href="/DotacionÑuble" class="sub-menu-link">Informe Ñuble</a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Registro Ausente</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/ausente" class="sub-menu-link">Ausente</a></li>
+                        <li><a href="/ListaraAusente" class="sub-menu-link"> Listar Ausente</a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Dotacion</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/Dotacion" class="sub-menu-link">Dotacion Funcionario<a></li>
+                        <li><a href="/dotacionTrabajo" class="sub-menu-link">Dotacion Trabajo<a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contenedor principal de dotación -->
+    <div class="dotacion-container">
+        <!-- Contenedor de la tabla -->
+        <div class="table-container">
+            <!-- Encabezado de dotación Ñuble -->
+            <div class="header-dotacion-Ñuble">
+                <h2 class="titulo-dotacion-Ñuble">Dotación Ñuble</h2>   
+            </div>
+            <button onclick="descargarExcel()">Descargar Excel</button>
+            <!-- Tabla de dotación Ñuble -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>OFICINA</th>
+                        <th>DIA Y HORARIO DE ATENCION</th>
+                        <th>¿CORRESPONDE ATENDER HOY? (SI/NO)</th>
+                        <th>¿OFICINA OPERA HOY? (SI/NO)</th>
+                        <th>SEMAFORO</th>
+                        <th>MOTIVO OFICINA OPERATIVA PARCIAL O NO OPERATIVA</th>
+                        <th>DOTACIÓN PRESENCIAL</th>
+                        <th>DOTACIÓN OFICINA</th> <!-- Nueva columna para dotación -->
+                        <th>OBSERVACIONES</th> <!-- Nueva columna para observaciones -->
+                    </tr>
+                </thead>
+                <tbody id="tabla-body">
+                    <!-- Filas de la tabla generadas dinámicamente -->
+                    <tr>
+                        <td>BULNES</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>BUSTAMANTE</td>
+                        <td>1° Y 3° MARTES DE CADA MES: 08:30 A 14:00 HORAS</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>CACHAPOAL</td>
+                        <td>1° Y 3° JUEVES DE CADA MES DE 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>CHILLÁN</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>CHILLÁN SO HOSPITAL</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>CHILLÁN VIEJO</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>COBQUECURA</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>COELEMU</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>COIHUECO</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>EL CARMEN</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>NINHUE</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>PEMUCO</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>PINTO</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>PORTEZUELO</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>QUILLON</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>QUINCHAMALI</td>
+                        <td>1° Y 3° MIERCOLES DE CADA MES</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>QUIRIHUE</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>RANQUIL</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>SAN CARLOS</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>SAN FABIAN DE ALICO</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>SAN GREGORIO DE ÑIQUEN</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>SAN IGNACIO</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>SAN NICOLAS</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>TREHUACO</td>
+                        <td>Martes Y Jueves 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>YUNGAY</td>
+                        <td>L - V 08:30 A 14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Enlace al archivo JavaScript -->
+    <script src="/js/DotacionÑuble.js"></script>
+</body>
+</html>

@@ -1,0 +1,480 @@
+/* Importación de la fuente */
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Estilos globales */
+* {
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el tamaño total de los elementos */
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el padding predeterminado de todos los elementos */
+    font-family: "Poppins", sans-serif; /* Aplica la fuente Poppins a todos los elementos */
+}
+
+:root {
+    --color-bg: #aed6f1; /* Color de fondo */
+    --color-surface: #2980b9; /* Color de la superficie */
+    --color-border: #9A9EB2; /* Color del borde */
+    --color-text-primary: #000; /* Color del texto primario */
+    --color-text-secondary: #3F435D; /* Color del texto secundario */
+    --color-tooltip-bg: #2A2E33; /* Color de fondo del tooltip */
+    --color-tooltip-text: #fff; /* Color del texto del tooltip */
+    --shadow-border: rgba(0, 0, 0, 0.1); /* Sombra del borde */
+    --user-bg-color: #FAFAFC; /* Color de fondo del usuario */
+    --sidebar-width: 20rem; /* Ancho de la barra lateral */
+    --siderbar-height: 100vh; /* Altura de la barra lateral */
+}
+
+/* Estilos del cuerpo */
+body {
+    display: flex; /* Usa un layout flexbox */
+    flex-direction: row; /* Dirección de los elementos en fila */
+    width: 100%; /* Ancho completo */
+    height: 100vh; /* Altura completa de la ventana */
+    background-color: var(--color-bg); /* Color de fondo */
+    overflow-y: hidden; /* Oculta el scroll vertical */
+    overflow-x: auto; /* Permite el scroll horizontal */
+    position: relative; /* Posición relativa */
+}
+
+/* Barra lateral */
+.sidebar {
+    border-right: 2px solid #eaf2f8; /* Borde derecho */
+    position: relative; /* Posición relativa */
+    display: flex; /* Usa un layout flexbox */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    align-items: left; /* Alinea los elementos a la izquierda */
+    justify-content: space-between; /* Espacia los elementos equitativamente */
+    width: var(--sidebar-width); /* Ancho de la barra lateral */
+    min-height: 100vh; /* Altura mínima de la barra lateral */
+    padding: 1.4rem 1rem 0 1rem; /* Padding interno */
+    background-color: var(--color-surface); /* Color de fondo */
+    box-shadow: 1px 0 10px var(--shadow-border); /* Sombra */
+    transition: width 0.5s ease; /* Transición suave del ancho */
+    z-index: 1000; /* Nivel de apilamiento */
+    flex-grow: 0; /* No permite crecer */
+    flex-shrink: 0; /* No permite encoger */
+}
+
+.sidebar.minimize {
+    width: 6rem; /* Ancho reducido cuando está minimizada */
+}
+
+/* Encabezado */
+.header {
+    width: 100%; /* Ancho completo */
+}
+
+/* Botón de menú */
+.menu-btn i {
+    font-size: 1.5rem; /* Tamaño de fuente */
+    color: white; /* Color blanco */
+}
+
+/* Marca */
+.brand {
+    width: 100%; /* Ancho completo */
+    display: flex; /* Usa un layout flexbox */
+    align-items: center; /* Alinea los elementos al centro */
+    gap: 0.7rem; /* Espacio entre elementos */
+    padding: 0.455rem; /* Padding interno */
+    margin-bottom: 1.8rem; /* Margen inferior */
+    overflow: hidden; /* Oculta el desbordamiento */
+}
+
+.brand img {
+    border: 3px solid white; /* Borde blanco */
+    width: 9rem; /* Ancho de la imagen */
+    margin-left: -0.3rem; /* Margen izquierdo negativo */
+}
+
+.brand span {
+    font-size: 1.1rem; /* Tamaño de fuente */
+    font-weight: 600; /* Peso de la fuente */
+    color: white; /* Color blanco */
+}
+
+/* Contenedor del menú */
+.menu-container {
+    display: flex; /* Usa un layout flexbox */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+    padding-right: 0.5rem; /* Padding derecho */
+}
+
+/* Búsqueda */
+.search {
+    display: flex; /* Usa un layout flexbox */
+    align-items: center; /* Alinea los elementos al centro */
+    width: calc(100% - 1rem); /* Ancho calculado */
+    padding: 0.5rem 0; /* Padding interno */
+    margin-bottom: 1.2rem; /* Margen inferior */
+    border-radius: 0.3rem; /* Bordes redondeados */
+    box-shadow: 0 0 0 1px; /* Sombra */
+    cursor: pointer; /* Cursor de puntero */
+    transition: box-shadow 0.5s ease; /* Transición suave de la sombra */
+    margin-left: 1rem; /* Margen izquierdo */
+    color: white; /* Color blanco */
+}
+
+.search:hover {
+    box-shadow: 0 0 0 1px; /* Sombra al pasar el mouse */
+    color: white; /* Color blanco */
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none; /* Elimina la apariencia predeterminada */
+    height: 16px; /* Altura del botón */
+    width: 16px; /* Ancho del botón */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>') no-repeat center center; /* Imagen de fondo del botón */
+}
+
+.search i {
+    font-size: 1.35rem; /* Tamaño de fuente */
+    color: white; /* Color blanco */
+    padding: 0 0.8rem; /* Padding interno */
+    margin-left: -0.3rem; /* Margen izquierdo negativo */
+}
+
+.search:hover i {
+    color: white; /* Color blanco al pasar el mouse */
+}
+
+input::placeholder {
+    color: white; /* Color del placeholder */
+}
+
+.search input {
+    width: 70%; /* Ancho del input */
+    border: none; /* Sin borde */
+    outline: none; /* Sin contorno */
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Color blanco */
+}
+
+/* Menú */
+.menu {
+    width: 100%; /* Ancho completo */
+    display: flex; /* Usa un layout flexbox */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    gap: 0.5rem; /* Espacio entre elementos */
+    color: white; /* Color blanco */
+}
+
+.menu .menu-item {
+    position: relative; /* Posición relativa */
+    list-style: none; /* Sin estilo de lista */
+    overflow: hidden; /* Oculta el desbordamiento */
+}
+
+.menu .menu-link {
+    display: flex; /* Usa un layout flexbox */
+    padding: 0.55rem 0; /* Padding interno */
+    color: white; /* Color blanco */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 0.3rem; /* Bordes redondeados */
+    margin-left: 2rem; /* Margen izquierdo */
+}
+
+.menu-item:hover .menu-link,
+.sub-menu .sub-menu-link:hover {
+    color: var(--color-text-primary); /* Color del texto primario al pasar el mouse */
+    background-color: var(--color-bg); /* Color de fondo al pasar el mouse */
+}
+
+.menu .menu-link i {
+    font-size: 1.35rem; /* Tamaño de fuente */
+    padding: 0 0.83rem; /* Padding interno */
+}
+
+.menu-link i:last-child {
+    margin-left: auto; /* Margen izquierdo automático */
+}
+
+.menu-item.sub-menu-toggle .menu-link i:last-child {
+    transform: rotate(180deg); /* Rotación de 180 grados */
+}
+
+.menu-item.sub-menu-toggled .menu-link i:last-child {
+    transform: rotate(180deg); /* Rotación de 180 grados */
+    transition: transform 0.3s ease; /* Transición suave de la rotación */
+}
+
+.menu-link span {
+    font-size: 0.8rem; /* Tamaño de fuente */
+    font-weight: 500; /* Peso de la fuente */
+}
+
+/* Submenú */
+.sub-menu {
+    height: 0; /* Altura inicial */
+    transition: all 0.3s ease; /* Transición suave */
+    margin-left: 4.5rem; /* Margen izquierdo */
+}
+
+.sub-menu .sub-menu-link {
+    display: flex; /* Usa un layout flexbox */
+    margin-left: 0rem; /* Sin margen izquierdo */
+    padding: 0.55rem 0.50rem; /* Padding interno */
+    font-size: 0.75rem; /* Tamaño de fuente */
+    font-weight: 500; /* Peso de la fuente */
+    color: white; /* Color blanco */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 0.3rem; /* Bordes redondeados */
+}
+
+.sub-menu::before {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posición absoluta */
+    height: 100%; /* Altura completa */
+    width: 0.07rem; /* Ancho */
+    margin-left: -0.85rem; /* Margen izquierdo negativo */
+    background-color: var(--color-border); /* Color de fondo */
+}
+
+.sidebar.minimize .menu .menu-link {
+    margin-left: 1rem; /* Margen izquierdo reducido */
+}
+
+/* Barra superior */
+.barra-superior {
+    border-bottom: 2px solid #eaf2f8; /* Borde inferior */
+    position: fixed; /* Posición fija */
+    top: 0px; /* Posición superior */
+    left: 0px; /* Posición izquierda */
+    right: 0px; /* Posición derecha */
+    width: 100%; /* Ancho completo */
+    background: #2e86c1; /* Color de fondo */
+    color: white; /* Color blanco */
+    padding: 30px 20px; /* Padding interno */
+    display: flex; /* Usa un layout flexbox */
+    justify-content: space-between; /* Espacia los elementos equitativamente */
+    align-items: center; /* Alinea los elementos al centro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+    z-index: 1000; /* Nivel de apilamiento */
+}
+
+.info-usuario {
+    display: flex; /* Usa un layout flexbox */
+    align-items: center; /* Alinea los elementos al centro */
+    margin-left: auto; /* Margen izquierdo automático */
+    margin-top: -5px; /* Margen superior negativo */
+}
+
+.nombre-completo span {
+    margin-right: 200px; /* Margen derecho */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+    display: flex; /* Usa un layout flexbox */
+    margin-top: -20px; /* Margen superior negativo */
+}
+
+.usuario {
+    font-size: 1rem; /* Tamaño de fuente */
+    margin-bottom: 16px; /* Margen inferior */
+}
+
+.nombre {
+    font-size: 1rem; /* Tamaño de fuente */
+    margin-bottom: 16px; /* Margen inferior */
+    margin-top: 16px; /* Margen superior */
+}
+
+.fecha {
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: normal; /* Peso de la fuente normal */
+    margin-bottom: -20px; /* Margen inferior negativo */
+}
+
+/* Contenedor de dotación */
+.dotacion-container {
+    margin-left: 0; /* Sin margen izquierdo */
+    padding: 2rem; /* Padding interno */
+    position: relative; /* Posición relativa */
+    top: 0; /* Posición superior */
+    left: 0; /* Posición izquierda */
+    min-height: 100vh; /* Altura mínima */
+    flex-grow: 1; /* Permite crecer */
+    bottom: 2.8rem; /* Posición inferior */
+    height: 100%; /* Altura completa */
+    font-size: 0.8rem; /* Tamaño de fuente */
+}
+
+/* Contenedor de la tabla */
+.table-container {
+    width: 100%; /* Ancho completo */
+    background: white; /* Fondo blanco */
+    padding: 10px 50px; /* Padding interno */
+    margin: 0; /* Sin margen */
+    margin-top: 3rem; /* Margen superior */
+    border-radius: 4px; /* Bordes redondeados */
+    color: white; /* Color blanco */
+    height: 95%; /* Altura */
+    position: relative; /* Posición relativa */
+    overflow-x: auto; /* Permite el scroll horizontal */
+    font-size: 0.8rem; /* Tamaño de fuente */
+}
+
+/* Tabla */
+table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsa los bordes */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Borde */
+    padding: 0.5rem; /* Padding interno */
+    text-align: center; /* Alineación centrada */
+    vertical-align: middle; /* Alineación vertical al medio */
+    white-space: normal; /* Espacio en blanco normal */
+    overflow: hidden; /* Oculta el desbordamiento */
+    text-overflow: ellipsis; /* Texto con puntos suspensivos */
+    font-size: 0.6rem; /* Tamaño de fuente */
+    max-width: 150px; /* Ancho máximo */
+    word-wrap: break-word; /* Ajuste de palabras */
+    color: black; /* Color negro */
+}
+
+th {
+    background: var(--color-surface); /* Fondo */
+    color: var(--color-white); /* Color blanco */
+}
+
+table tr:hover {
+    background-color: #f1f1f1; /* Fondo al pasar el mouse */
+}
+
+td input[type="checkbox"] {
+    transform: scale(1.5); /* Escala del checkbox */
+}
+
+/* Botones */
+button {
+    margin-top: 1rem; /* Margen superior */
+    padding: 0.5rem; /* Padding interno */
+    background-color: #2980b9; /* Fondo */
+    color: white; /* Color blanco */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de puntero */
+}
+
+.btn-agregar {
+    background-color: #2ecc71; /* Fondo */
+}
+
+.btn-eliminar {
+    background-color: #e74c3c; /* Fondo */
+}
+
+.btn-actualizar {
+    background-color: #2980b9; /* Fondo */
+}
+
+h2 {
+    color: black; /* Color negro */
+    text-align: left; /* Alineación a la izquierda */
+    margin-bottom: 0rem; /* Sin margen inferior */
+    margin-top: 0rem; /* Sin margen superior */
+}
+
+/* Modal */
+.modal {
+    display: none; /* No se muestra */
+    position: fixed; /* Posición fija */
+    z-index: 1000; /* Nivel de apilamiento */
+    left: 0; /* Posición izquierda */
+    top: 0; /* Posición superior */
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Permite el scroll */
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fefefe; /* Fondo */
+    margin: 5% auto; /* Margen automático */
+    padding: 20px; /* Padding interno */
+    border: 1px solid #888; /* Borde */
+    width: 80%; /* Ancho */
+    max-width: 400px; /* Ancho máximo */
+}
+
+.close {
+    color: #aaa; /* Color */
+    float: right; /* Flota a la derecha */
+    font-size: 28px; /* Tamaño de fuente */
+    font-weight: bold; /* Peso de la fuente */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Color al pasar el mouse o enfocar */
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer; /* Cursor de puntero */
+}
+
+form {
+    font-size: 0.8rem; /* Tamaño de fuente */
+    padding: 0.5rem; /* Padding interno */
+    min-height: 100vh; /* Altura mínima */
+    width: 100%; /* Ancho completo */
+}
+
+form label {
+    display: block; /* Muestra como bloque */
+    margin-top: 10px; /* Margen superior */
+    font-size: 0.8rem; /* Tamaño de fuente */
+    padding: 4px; /* Padding interno */
+}
+
+form input {
+    width: 300px; /* Ancho */
+    padding: 4px; /* Padding interno */
+    margin-top: 5px; /* Margen superior */
+    font-size: 0.8rem; /* Tamaño de fuente */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
+}
+
+.header-dotacion {
+    display: flex; /* Usa un layout flexbox */
+    justify-content: space-between; /* Espacia los elementos equitativamente */
+    align-items: center; /* Alinea los elementos al centro */
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+.titulo-dotacion {
+    margin: 0; /* Sin margen */
+    margin-bottom: 30px; /* Margen inferior */
+}
+
+.botones-dotacion {
+    display: flex; /* Usa un layout flexbox */
+    gap: 10px; /* Espacio entre elementos */
+}
+
+.botones-dotacion button {
+    margin-left: 0; /* Sin margen izquierdo */
+    margin-top: 0px; /* Sin margen superior */
+}
+
+.header-dotacion {
+    display: flex; /* Usa un layout flexbox */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+/* Establece el ancho de los elementos con los IDs especificados a 250 píxeles */
+#estado, #unidad_laboral, #cargo, #cargo-actualizar, #calificacion, #calificacion-actualizar, #estado-actualizar, #sigla_unidad_laboral, #sigla_unidad_laboral-actualizar, #unidad_laboral-actualizar {
+    width: 250px;
+}
+
+/* Estilos para el elemento con la clase .run-display */
+.run-display {
+    border: 1px solid #ccc; /* Aplica un borde de 1 píxel de color gris claro */
+    padding: 8px; /* Aplica un padding de 8 píxeles */
+    width: 100%; /* Establece el ancho al 100% del contenedor */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
+    background-color: #f9f9f9; /* Establece el color de fondo a un gris muy claro */
+}
+

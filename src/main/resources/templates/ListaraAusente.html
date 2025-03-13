@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Ausentes</title>
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="/css/ListaraAusente.css">
+    <!-- Enlace a los iconos de Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body> 
+
+    <!-- Barra superior con información del usuario -->
+    <div class="barra-superior">
+        <div class="info-usuario">
+            <span class="nombre-completo">
+                <span class="usuario"> Usuario:</span>
+                <span class="nombre"> Nombre:</span>
+                <span class="fecha"> Fecha:</span>
+            </span>
+        </div>
+    </div>
+        
+    <!-- Barra lateral (sidebar) -->
+    <div class="sidebar" id="sidebar">
+        <div class="header">
+            <!-- Botón del menú -->
+            <div class="menu-btn" id="menu-btn"></div> 
+            <!-- Marca con el logo y el nombre de la institución -->
+            <div class="brand">
+                <img src="/imagenes/LogoRegistroCivil.png" alt="logo">
+                <span>Registro Civil De Ñuble</span>
+            </div>
+        </div>
+        
+        <!-- Contenedor del menú -->
+        <div class="menu-container">
+            <!-- Barra de búsqueda -->
+            <div class="search">
+                <i class='bx bx-search'></i>
+                <input type="search" placeholder="Buscar...">
+            </div>
+            <!-- Menú de navegación -->
+            <ul class="menu">
+                <!-- Elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Inicio</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/inicio" class="sub-menu-link">Inicio<a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Informe Diario</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/formulario" class="sub-menu-link">Informe diario</a></li>
+                        <li><a href="/DotacionÑuble" class="sub-menu-link">Informe Ñuble</a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Registro Ausente</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/ausente" class="sub-menu-link">Ausente</a></li>
+                        <li><a href="/ListaraAusente" class="sub-menu-link"> Listar Ausente</a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Dotacion</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/Dotacion" class="sub-menu-link">Dotacion Funcionario<a></li>
+                        <li><a href="/dotacionTrabajo" class="sub-menu-link">Dotacion Trabajo<a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Tabla para listar los ausentes -->
+    <div class="container-ausente">
+        <div class="table-container">
+            <h4 class="Formulario ausentes">Lista de Ausentes</h4>
+            
+            <!-- Formulario de búsqueda por fechas -->
+            <div class="search-container">
+                <div class="date-group">
+                    <label for="start-date"><strong>Fecha de Inicio:</strong></label>
+                    <input type="date" id="start-date" class="date-input">
+                </div>
+                <div class="date-group">
+                    <label for="end-date"><strong>Fecha de Fin:</strong></label>
+                    <input type="date" id="end-date" class="date-input">
+                </div>
+                <button class="search-button" onclick="buscarAusentesPorFechas()">Buscar</button>
+            </div>
+
+            <!-- Tabla para mostrar los ausentes -->
+            <table id="ausentesTable" class="table-ausentes">
+                <thead>
+                    <tr>
+                        <th>RUN</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Oficina</th>
+                        <th>Tipo de Ausentismo</th>
+                        <th>Otro</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Término</th>
+                        <th>Observaciones</th>
+                        <th>Fecha de Envío</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Los datos se llenarán dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+        
+    <!-- Enlace al archivo JavaScript -->
+    <script src="/js/ListaraAusente.js"></script>
+</body>
+</html>

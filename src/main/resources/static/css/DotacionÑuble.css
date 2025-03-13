@@ -1,0 +1,462 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');*/
+/* Importa la fuente "Poppins" desde Google Fonts */
+
+/* antes existia un .container que no estaba dejando que la barra lateral puera llegar hasta abajo*/
+/* Comentario sobre un contenedor anterior que impedía que la barra lateral llegara hasta abajo */
+
+* {
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el tamaño total de los elementos */
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el padding predeterminado de todos los elementos */
+    font-family: "Poppins", sans-serif; /* Aplica la fuente "Poppins" a todos los elementos */
+}
+
+:root {
+    --color-bg: #aed6f1; /* Define una variable para el color de fondo */
+    --color-surface: #2980b9; /* Define una variable para el color de la superficie */
+    --color-border: #9A9EB2; /* Define una variable para el color del borde */
+    --color-text-primary: #000; /* Define una variable para el color del texto primario */
+    --color-text-secondary: #3F435D; /* Define una variable para el color del texto secundario */
+    --color-tooltip-bg: #2A2E33; /* Define una variable para el color de fondo del tooltip */
+    --color-tooltip-text: #fff; /* Define una variable para el color del texto del tooltip */
+    --shadow-border: rgba(0, 0, 0, 0.1); /* Define una variable para la sombra del borde */
+    --user-bg-color: #FAFAFC; /* Define una variable para el color de fondo del usuario */
+    --sidebar-width: 20rem; /* Define una variable para el ancho de la barra lateral */
+    --siderbar-height: 100vh; /* Define una variable para la altura de la barra lateral */
+}
+
+/* Body */
+
+body {
+    display: flex; /* Utiliza un diseño flexbox */
+    flex-direction: row; /* Organiza los elementos hijos en una fila */
+    width: 100%; /* Establece el ancho del cuerpo al 100% */
+    height: 100vh; /* Establece la altura del cuerpo al 100% de la altura de la ventana */
+    background-color: var(--color-bg); /* Aplica el color de fondo definido en la variable */
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    position: relative; /* Establece la posición relativa */
+}
+
+/* Sidebar */
+
+.sidebar {
+    border-right: 2px solid #eaf2f8; /* Aplica un borde derecho */
+    position: relative; /* Establece la posición relativa */
+    display: flex; /* Utiliza un diseño flexbox */
+    flex-direction: column; /* Organiza los elementos hijos en una columna */
+    align-items: left; /* Alinea los elementos hijos a la izquierda */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    width: var(--sidebar-width); /* Aplica el ancho definido en la variable */
+    min-height: 100vh; /* Establece la altura mínima al 100% de la altura de la ventana */
+    padding: 1.4rem 1rem 0 1rem; /* Aplica padding */
+    background-color: var(--color-surface); /* Aplica el color de fondo definido en la variable */
+    box-shadow: 1px 0 10px var(--shadow-border); /* Aplica una sombra */
+    transition: width 0.5s ease; /* Aplica una transición suave al ancho */
+    z-index: 1000; /* Establece el índice z */
+    flex-grow: 0; /* No permite que el elemento crezca */
+    flex-shrink: 0; /* No permite que el elemento se encoja */
+}
+
+/* Header */
+
+.header {
+    width: 100%; /* Establece el ancho al 100% */
+}
+
+/* Menu Button */
+
+.menu-btn i {
+    font-size: 1.5rem; /* Establece el tamaño de la fuente */
+    color: white; /* Establece el color del texto */
+}
+
+/* Brand */
+
+.brand {
+    width: 100%; /* Establece el ancho al 100% */
+    display: flex; /* Utiliza un diseño flexbox */
+    align-items: center; /* Alinea los elementos hijos al centro */
+    gap: 0.7rem; /* Aplica un espacio entre los elementos */
+    padding: 0.455rem; /* Aplica padding */
+    margin-bottom: 1.8rem; /* Aplica un margen inferior */
+    overflow: hidden; /* Oculta el contenido desbordado */
+}
+
+.brand img {
+    border: 3px solid white; /* Aplica un borde */
+    width: 9rem; /* Establece el ancho */
+    margin-left: -0.3rem; /* Aplica un margen izquierdo negativo */
+}
+
+.brand span {
+    font-size: 1.1rem; /* Establece el tamaño de la fuente */
+    font-weight: 600; /* Establece el peso de la fuente */
+    color: white; /* Establece el color del texto */
+}
+
+/* Menu Container */
+
+.menu-container {
+    display: flex; /* Utiliza un diseño flexbox */
+    width: 100%; /* Establece el ancho al 100% */
+    height: 100%; /* Establece la altura al 100% */
+    flex-direction: column; /* Organiza los elementos hijos en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio */
+    padding-right: 0.5rem; /* Aplica padding derecho */
+}
+
+/* Search */
+
+.search {
+    display: flex; /* Utiliza un diseño flexbox */
+    align-items: center; /* Alinea los elementos hijos al centro */
+    width: calc(100% - 1rem); /* Establece el ancho */
+    padding: 0.5rem 0; /* Aplica padding */
+    margin-bottom: 1.2rem; /* Aplica un margen inferior */
+    border-radius: 0.3rem; /* Aplica un borde redondeado */
+    box-shadow: 0 0 0 1px; /* Aplica una sombra */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: box-shadow 0.5s ease; /* Aplica una transición suave a la sombra */
+    margin-left: 1rem; /* Aplica un margen izquierdo */
+    color: white; /* Establece el color del texto */
+}
+
+.search:hover {
+    box-shadow: 0 0 0 1px; /* Aplica una sombra */
+    color: white; /* Establece el color del texto */
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none; /* Elimina la apariencia predeterminada */
+    height: 16px; /* Establece la altura */
+    width: 16px; /* Establece el ancho */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>') no-repeat center center; /* Aplica una imagen de fondo */
+}
+
+.search i {
+    font-size: 1.35rem; /* Establece el tamaño de la fuente */
+    color: white; /* Establece el color del texto */
+    padding: 0 0.8rem; /* Aplica padding */
+    margin-left: -0.3rem; /* Aplica un margen izquierdo negativo */
+}
+
+.search:hover i {
+    color: white; /* Establece el color del texto */
+}
+
+input::placeholder {
+    color: white; /* Establece el color del texto del placeholder */
+}
+
+.search input {
+    width: 70%; /* Establece el ancho */
+    border: none; /* Elimina el borde */
+    outline: none; /* Elimina el contorno */
+    background-color: transparent; /* Establece el fondo transparente */
+    color: white; /* Establece el color del texto */
+}
+
+/* Menu */
+
+.menu {
+    width: 100%; /* Establece el ancho al 100% */
+    display: flex; /* Utiliza un diseño flexbox */
+    flex-direction: column; /* Organiza los elementos hijos en una columna */
+    gap: 0.5rem; /* Aplica un espacio entre los elementos */
+    color: white; /* Establece el color del texto */
+}
+
+.menu .menu-item {
+    position: relative; /* Establece la posición relativa */
+    list-style: none; /* Elimina el estilo de lista */
+    overflow: hidden; /* Oculta el contenido desbordado */
+}
+
+.menu .menu-link {
+    display: flex; /* Utiliza un diseño flexbox */
+    padding: 0.55rem 0; /* Aplica padding */
+    color: white; /* Establece el color del texto */
+    text-decoration: none; /* Elimina la decoración del texto */
+    border-radius: 0.3rem; /* Aplica un borde redondeado */
+    margin-left: 2rem; /* Aplica un margen izquierdo */
+}
+
+.menu-item:hover .menu-link,
+.sub-menu .sub-menu-link:hover {
+    color: var(--color-text-primary); /* Cambia el color del texto al pasar por encima */
+    background-color: var(--color-bg); /* Cambia el color de fondo al pasar por encima */
+}
+
+.menu .menu-link i {
+    font-size: 1.35rem; /* Establece el tamaño de la fuente */
+    padding: 0 0.83rem; /* Aplica padding */
+}
+
+.menu-link i:last-child {
+    margin-left: auto; /* Aplica un margen izquierdo automático */
+}
+
+.menu-item.sub-menu-toggle .menu-link i:last-child {
+    transform: rotate(180deg); /* Rota el icono 180 grados */
+}
+
+.menu-item.sub-menu-toggled .menu-link i:last-child {
+    transform: rotate(180deg); /* Rota el icono 180 grados */
+    transition: transform 0.3s ease; /* Aplica una transición suave a la rotación */
+}
+
+.menu-link span {
+    font-size: 0.8rem; /* Establece el tamaño de la fuente */
+    font-weight: 500; /* Establece el peso de la fuente */
+}
+
+/* Sub Menu */
+
+.sub-menu {
+    height: 0; /* Establece la altura a 0 */
+    transition: all 0.3s ease; /* Aplica una transición suave a todas las propiedades */
+    margin-left: 4.5rem; /* Aplica un margen izquierdo */
+}
+
+.sub-menu .sub-menu-link {
+    display: flex; /* Utiliza un diseño flexbox */
+    margin-left: 0rem; /* Elimina el margen izquierdo */
+    padding: 0.55rem 0.50rem; /* Aplica padding */
+    font-size: 0.75rem; /* Establece el tamaño de la fuente */
+    font-weight: 500; /* Establece el peso de la fuente */
+    color: white; /* Establece el color del texto */
+    text-decoration: none; /* Elimina la decoración del texto */
+    border-radius: 0.3rem; /* Aplica un borde redondeado */
+}
+
+.sub-menu::before {
+    content: ''; /* Añade contenido vacío */
+    position: absolute; /* Establece la posición absoluta */
+    height: 100%; /* Establece la altura al 100% */
+    width: 0.07rem; /* Establece el ancho */
+    margin-left: -0.85rem; /* Aplica un margen izquierdo negativo */
+    background-color: var(--color-border); /* Aplica el color de fondo definido en la variable */
+}
+
+.sidebar.minimize .menu .menu-link {
+    margin-left: 1rem; /* Aplica un margen izquierdo */
+}
+
+/* Barra Superior */
+
+.barra-superior {
+    border-bottom: 2px solid #eaf2f8; /* Aplica un borde inferior */
+    position: fixed; /* Establece la posición fija */
+    top: 0px; /* Establece la posición superior */
+    left: 0px; /* Establece la posición izquierda */
+    right: 0px; /* Establece la posición derecha */
+    width: 100%; /* Establece el ancho al 100% */
+    background: #2e86c1; /* Aplica el color de fondo */
+    color: white; /* Establece el color del texto */
+    padding: 30px 20px; /* Aplica padding */
+    display: flex; /* Utiliza un diseño flexbox */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    align-items: center; /* Alinea los elementos hijos al centro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Aplica una sombra */
+    z-index: 1000; /* Establece el índice z */
+}
+
+.info-usuario {
+    display: flex; /* Utiliza un diseño flexbox */
+    align-items: center; /* Alinea los elementos hijos al centro */
+    margin-left: auto; /* Aplica un margen izquierdo automático */
+    margin-top: -5px; /* Aplica un margen superior negativo */
+}
+
+.nombre-completo span {
+    margin-right: 200px; /* Aplica un margen derecho */
+    flex-direction: column; /* Organiza los elementos hijos en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio */
+    display: flex; /* Utiliza un diseño flexbox */
+    margin-top: -20px; /* Aplica un margen superior negativo */
+}
+
+.usuario {
+    font-size: 1rem; /* Establece el tamaño de la fuente */
+    margin-bottom: 16px; /* Aplica un margen inferior */
+}
+
+.nombre {
+    font-size: 1rem; /* Establece el tamaño de la fuente */
+    margin-bottom: 16px; /* Aplica un margen inferior */
+    margin-top: 16px; /* Aplica un margen superior */
+}
+
+.fecha {
+    font-size: 1rem; /* Establece el tamaño de la fuente */
+    font-weight: normal; /* Establece el peso de la fuente */
+    margin-bottom: -20px; /* Aplica un margen inferior negativo */
+}
+
+/* Dotacion Container */
+
+.dotacion-container {
+    margin-left: 0; /* Ajustado para que no haya margen negativo */
+    padding: 2rem; /* Aplica padding */
+    position: relative; /* Establece la posición relativa */
+    top:0; /* Establece la posición superior */
+    left: 0; /* Ajustado para que esté al lado de la barra lateral */
+    min-height: 100vh; /* Asegura que el contenedor tenga al menos la altura de la ventana */
+    flex-grow: 1; /* Permite que el contenedor crezca para llenar el espacio disponible */
+    bottom: 2.8rem; /* Establece la posición inferior */
+    height: 100%; /* Establece la altura al 100% */
+}
+
+/* Table Container */
+
+.table-container {
+    width: 100%; /* Establece el ancho al 100% */
+    background: white; /* Aplica el color de fondo */
+    padding: 10px 50px; /* Aplica padding */
+    margin: 0; /* Elimina el margen */
+    margin-top: 3rem; /* Aplica un margen superior */
+    border-radius: 4px; /* Aplica un borde redondeado */
+    height: 95%; /* Establece la altura al 95% */
+    position: relative; /* Establece la posición relativa */
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+}
+
+/* Table */
+
+table {
+    width: 100%; /* Establece el ancho al 100% */
+    border-collapse: collapse; /* Colapsa los bordes */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Aplica un borde */
+    padding: 0.5rem; /* Aplica padding */
+    text-align: center; /* Alinea el texto al centro */
+    vertical-align: middle; /* Alinea el contenido verticalmente al centro */
+    white-space: normal; /* Permite el ajuste de línea */
+    overflow: hidden; /* Oculta el contenido desbordado */
+    text-overflow: ellipsis; /* Aplica puntos suspensivos al texto desbordado */
+    font-size: 0.8rem; /* Establece el tamaño de la fuente */
+    max-width: 150px; /* Establece el ancho máximo */
+    word-wrap: break-word; /* Permite el ajuste de palabra */
+    color: black; /* Establece el color del texto */
+}
+
+table th {
+    color: white; /* Establece el color del texto */
+}
+
+th {
+    background: var(--color-surface); /* Aplica el color de fondo definido en la variable */
+    color: var(--color-white); /* Aplica el color del texto definido en la variable */
+}
+
+table tr:hover {
+    background-color: #f1f1f1; /* Cambia el color de fondo al pasar por encima */
+}
+
+td input[type="checkbox"] {
+    transform: scale(1.5); /* Escala el tamaño del checkbox */
+}
+
+/* Buttons */
+
+button {
+    margin-top: 1rem; /* Aplica un margen superior */
+    padding: 0.5rem; /* Aplica padding */
+    background-color: #2980b9; /* Aplica el color de fondo */
+    color: white; /* Establece el color del texto */
+    border: none; /* Elimina el borde */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+.btn-agregar {
+    background-color: #2ecc71; /* Aplica el color de fondo */
+}
+
+td input[type="checkbox"] {
+    transform: scale(1.5); /* Escala el tamaño del checkbox */
+}
+
+button {
+    margin-top: 1rem; /* Aplica un margen superior */
+    padding: 0.5rem; /* Aplica padding */
+    background-color: #2980b9; /* Aplica el color de fondo */
+    color: white; /* Establece el color del texto */
+    border: none; /* Elimina el borde */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Cambia a fixed para que se desplace con la página */
+    z-index: 1000; /* Establece el índice z */
+    left: 0; /* Establece la posición izquierda */
+    top: 0; /* Establece la posición superior */
+    width: 100%; /* Establece el ancho al 100% */
+    height: 100%; /* Establece la altura al 100% */
+    overflow: auto; /* Permite el desplazamiento automático */
+    background-color: rgba(0, 0, 0, 0.4); /* Aplica un color de fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fefefe; /* Aplica el color de fondo */
+    margin: 5% auto; /* Aplica márgenes automáticos y un margen superior del 5% */
+    padding: 20px; /* Aplica padding */
+    border: 1px solid #888; /* Aplica un borde */
+    width: 80%; /* Establece el ancho al 80% */
+    max-width: 400px; /* Establece el ancho máximo */
+}
+
+.close {
+    color: #aaa; /* Establece el color del texto */
+    float: right; /* Flota el elemento a la derecha */
+    font-size: 28px; /* Establece el tamaño de la fuente */
+    font-weight: bold; /* Establece el peso de la fuente */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Cambia el color del texto al pasar por encima o al enfocar */
+    text-decoration: none; /* Elimina la decoración del texto */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+form {
+    font-size: 0.8rem; /* Establece el tamaño de la fuente */
+    padding: 0.5rem; /* Aplica padding */
+    min-height: 100vh; /* Asegura que el formulario tenga al menos la altura de la ventana */
+    width: 100%; /* Asegura que el formulario ocupe todo el ancho disponible */
+}
+
+form label {
+    display: block; /* Muestra el elemento como un bloque */
+    margin-top: 10px; /* Aplica un margen superior */
+    font-size: 0.8rem; /* Establece el tamaño de la fuente */
+    padding: 4px; /* Aplica padding */
+}
+
+form input {
+    width: 300px; /* Establece el ancho */
+    padding: 4px; /* Aplica padding */
+    margin-top: 5px; /* Aplica un margen superior */
+    font-size: 0.8rem; /* Establece el tamaño de la fuente */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
+}
+
+.semaforo-operativa {
+    background-color: green; /* Aplica el color de fondo */
+    color: white; /* Establece el color del texto */
+}
+
+.semaforo-no-operativa {
+    background-color: red; /* Aplica el color de fondo */
+    color: white; /* Establece el color del texto */
+}
+
+.semaforo-operatividad-parcial {
+    background-color: yellow; /* Aplica el color de fondo */
+    color: black; /* Establece el color del texto */
+}
+

@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total de los elementos */
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el padding predeterminado de todos los elementos */
+    font-family: "Poppins", sans-serif; /* Aplica la fuente "Poppins" a todos los elementos */
+}
+
+/* Variables CSS */
+:root {
+    --color-bg: #aed6f1; /* Color de fondo principal */
+    --color-surface: #2980b9; /* Color de superficie */
+    --color-border: #9A9EB2; /* Color de borde */
+    --color-text-primary: #000; /* Color de texto primario */
+    --color-text-secondary: #3F435D; /* Color de texto secundario */
+    --color-tooltip-bg: #2A2E33; /* Color de fondo de los tooltips */
+    --color-tooltip-text: #fff; /* Color de texto de los tooltips */
+    --shadow-border: rgba(0, 0, 0, 0.1); /* Sombra para los bordes */
+    --user-bg-color: #FAFAFC; /* Color de fondo para el usuario */
+    --sidebar-width: 20rem; /* Ancho de la barra lateral */
+}
+
+.contenedor-principal {
+    width: 100%; /* El contenedor ocupa el 100% del ancho disponible */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    display: flex; /* Utiliza flexbox para el diseño */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
+    padding: 20px; /* Padding interno del contenedor */
+    gap: 20px; /* Espacio entre los elementos hijos */
+    transform: translateX(26%); /* Mueve el contenedor a la derecha */
+}
+
+.filtros {
+    display: flex; /* Utiliza flexbox para el diseño */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    margin-top: 70px; /* Margen superior */
+    gap: 10px; /* Espacio entre los elementos hijos */
+    padding: 10px; /* Padding interno */
+    background-color: var(--user-bg-color); /* Color de fondo */
+    border: 1px solid var(--color-border); /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    width: 100%; /* El contenedor ocupa el 100% del ancho disponible */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
+    background-color: #aed6f1; /* Color de fondo */
+    border: 1px solid #aed6f1; /* Borde */
+}
+
+.tabla-contenedor {
+    width: 100%; /* El contenedor ocupa el 100% del ancho disponible */
+    overflow-x: auto; /* Permite el desplazamiento horizontal si el contenido es demasiado ancho */
+    margin-top: 20px; /* Margen superior */
+}
+
+table {
+    width: 100%; /* La tabla ocupa el 100% del contenedor */
+    border-collapse: collapse; /* Colapsa los bordes de la tabla */
+    background-color: white; /* Color de fondo de la tabla */
+    border-radius: 7px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra alrededor de la tabla */
+}
+
+th, td {
+    padding: 12px; /* Padding interno de las celdas */
+    text-align: left; /* Alinea el texto a la izquierda */
+    border-bottom: 1px solid var(--color-border); /* Borde inferior */
+}
+
+thead {
+    background-color: #2e86c1; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+th {
+    font-weight: 600; /* Peso de la fuente */
+}
+
+/* Estilos para el select */
+.controls {
+    width: 150px; /* Ancho del select */
+    padding: 8px; /* Padding interno */
+    border: 1px solid var(--color-border); /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    font-family: 'calibri'; /* Fuente */
+    font-size: 16px; /* Tamaño de la fuente */
+    background-color: white; /* Color de fondo */
+    color: #333; /* Color del texto */
+}
+
+/* Estilos para el input de fecha */
+input[type="date"] {
+    width: 150px; /* Ancho del input */
+    padding: 8px; /* Padding interno */
+    border: 1px solid var(--color-border); /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    font-family: 'calibri'; /* Fuente */
+    font-size: 16px; /* Tamaño de la fuente */
+    background-color: var(--user-bg-color); /* Color de fondo */
+    color: var(--color-text-primary); /* Color del texto */
+}
+
+/* Estilos para el botón */
+button {
+    width: 100px; /* Ancho del botón */
+    padding: 8px 16px; /* Padding interno */
+    background-color: var(--color-surface); /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de la fuente */
+}
+
+button:hover {
+    background-color: #153b7e; /* Color de fondo al pasar el cursor */
+    color: black; /* Color del texto al pasar el cursor */
+}
+
+/* Estilos para los labels */
+label {
+    font-size: 16px; /* Tamaño de la fuente */
+    font-family: 'calibri'; /* Fuente */
+    color: #333; /* Color del texto */
+    display: inline-block; /* Muestra el label como un bloque en línea */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}

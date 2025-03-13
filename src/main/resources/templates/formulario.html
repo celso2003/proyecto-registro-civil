@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Asistencia</title>
+    <!-- Enlace a las hojas de estilos CSS -->
+    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="/css/styles1.css">
+    <!-- Enlace a los iconos de Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body> 
+
+    <!-- Barra superior con información del usuario -->
+    <div class="barra-superior">
+        <div class="info-usuario">
+            <span class="nombre-completo">
+                <span class="usuario"> Usuario:</span>
+                <span class="nombre"> Nombre:</span>
+                <span class="fecha"> Fecha:</span>
+            </span>
+        </div>
+    </div>
+         
+    <!-- Barra lateral (sidebar) -->
+    <div class="sidebar" id="sidebar">
+        <div class="header">
+            <!-- Botón del menú -->
+            <div class="menu-btn" id="menu-btn"></div> 
+            <!-- Marca con el logo y el nombre de la institución -->
+            <div class="brand">
+                <img src="/imagenes/LogoRegistroCivil.png" alt="logo">
+                <span>Registro Civil De Ñuble</span>
+            </div>
+        </div>
+        
+        <!-- Contenedor del menú -->
+        <div class="menu-container">
+            <!-- Barra de búsqueda -->
+            <div class="search">
+                <i class='bx bx-search'></i>
+                <input type="search" placeholder="Buscar...">
+            </div>
+            <!-- Menú de navegación -->
+            <ul class="menu">
+                <!-- Elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Inicio</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/inicio" class="sub-menu-link">Inicio<a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Informe Diario</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/formulario" class="sub-menu-link">Informe diario</a></li>
+                        <li><a href="/DotacionÑuble" class="sub-menu-link">Informe Ñuble</a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Registro Ausente</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/ausente" class="sub-menu-link">Ausente</a></li>
+                        <li><a href="/ListaraAusente" class="sub-menu-link"> Listar Ausente</a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Dotacion</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/Dotacion" class="sub-menu-link">Dotacion Funcionario<a></li>
+                        <li><a href="/dotacionTrabajo" class="sub-menu-link">Dotacion Trabajo<a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sección del formulario de asistencia -->
+    <section class="form-asistencia">
+        <h4> Informe Diario </h4>
+        <h4>Datos del Funcionario</h4>
+
+        <!-- Campo para seleccionar el RUN del funcionario -->
+        <label for="run">RUN</label>
+        <select id="run" class="controls" name="run">
+            <option value="0">Seleccione un Run</option>
+        </select>
+
+        <!-- Campo para seleccionar el usuario -->
+        <label for="usuario">Usuario</label>
+        <select id="apodo" class="controls" name="apodo">
+            <option value="0">Seleccione un usuario</option>
+        </select>
+
+        <!-- Campo para ingresar los nombres del funcionario -->
+        <label for="nombres">Nombres</label>
+        <input class="controls" type="text" name="nombres" id="nombre" placeholder="Nombres">
+
+        <!-- Campo para ingresar el apellido paterno del funcionario -->
+        <label for="apellido paterno">Apellido Paterno</label>
+        <input class="controls" type="text" name="apellidoPaterno" id="apellidoPaterno" placeholder="Apellido paterno">
+
+        <!-- Campo para ingresar el apellido materno del funcionario -->
+        <label for="apellido materno">Apellido Materno</label>
+        <input class="controls" type="text" name="apellidoMaterno" id="apellidoMaterno" placeholder="Apellido materno">
+
+        <!-- Campo para seleccionar el área del funcionario -->
+        <label for="area">Área</label>
+        <select id="area" class="controls" name="area">
+            <option value="0">Seleccione un área o jefatura</option>
+        </select>
+
+        <!-- Campo para seleccionar el cargo del funcionario -->
+        <label for="cargo">Cargo</label>
+        <select id="cargo" class="controls" name="cargo">
+            <option value="0">Seleccione un cargo o puesto</option>
+        </select>
+
+        <h4>Datos Oficina</h4>
+
+        <!-- Campo para seleccionar la oficina -->
+        <label for="oficina">Oficina</label>
+        <select id="oficina" class="controls" name="oficina">
+            <option value="0">Seleccione Oficina</option>
+        </select>
+
+        <!-- Campo para ingresar la dotación -->
+        <label for="dotacion">Dotación</label>
+        <input class="controls" type="number" name="dotacion" id="dotacion" placeholder="Dotación" readonly>
+
+        <!-- Campo para seleccionar la fecha -->
+        <label for="fecha">Fecha</label>
+        <input class="controls" type="date" name="fecha" id="fecha" placeholder="Fecha">
+
+        <!-- Campo para ingresar la dotación efectiva -->
+        <label for="dotacion efectiva">Funcionarios presentes</label>
+        <input class="controls" type="number" name="dotacionEfectiva" id="dotacionEfectiva" placeholder="Dotacion Efectiva">
+
+        <h4>Atención Oficina</h4>
+
+        <!-- Campo para seleccionar el estado de la oficina -->
+        <label for="estadoOficina">Estado de la oficina</label>
+        <select id="estadoOficina" class="controls" name="Escoger opción">
+            <option value="0">Seleccione una opcion</option>
+            <option value="Operativo">Operativo</option>
+            <option value="Operativo Parcial">Operativo Parcial</option>
+            <option value="No Operativo">No Operativo</option>
+            <option value="No Aplica">No Aplica</option>
+        </select>
+
+        <!-- Campo para seleccionar si corresponde atender hoy -->
+        <label for="atender">¿Corresponde atender hoy?</label>
+        <select id="atencionHoy" class="controls" name="Escoger opción">
+            <option value="0">Seleccione una opcion</option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+            <option value="No Aplica">No Aplica</option>
+        </select>
+
+        <!-- Campo para seleccionar si la oficina opera hoy -->
+        <label for="opera">¿Oficina opera hoy?</label>
+        <select id="oficinaOpera" class="controls" name="Escoger opción">
+            <option value="0">Seleccione una opcion</option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+            <option value="No Aplica">No Aplica</option>
+        </select>
+
+        <!-- Campo para seleccionar el motivo por el cual no opera -->
+        <label for="motivo">Motivo por que no opera</label>
+        <select id="motivoNoOpera" class="controls" name="Motivo">
+            <option value="0">Seleccione un motivo</option>
+            <option value="APOYO EN OTRA OFICINA">APOYO EN OTRA OFICINA</option>
+            <option value="EMERGENCIA O CATÁSTROFE">EMERGENCIA O CATÁSTROFE</option>
+            <option value="EN CAPACITACIÓN">EN CAPACITACIÓN</option>
+            <option value="FUNCIONARIOAS NO HAN PODIDO LLEGAR A LA OFICINA">FUNCIONARIOAS NO HAN PODIDO LLEGAR A LA OFICINA</option>
+            <option value="ROBOS O DAÑOS SUFRIDOS EN OFICINA">ROBOS O DAÑOS SUFRIDOS EN OFICINA</option>
+            <option value="SIN AGUA">SIN AGUA</option>
+            <option value="SIN DOTACIÓN(FERIADO LEGAL/PERMISO ADMINISTRATIVO/LICENCIA MEDICA/OTROS/SIN REEMPLAZO)">SIN DOTACIÓN(FERIADO LEGAL/PERMISO ADMINISTRATIVO/LICENCIA MEDICA/OTROS/SIN REEMPLAZO)</option>
+            <option value="NO FUE FACTIBLE CONTACTAR OFICINA">NO FUE FACTIBLE CONTACTAR OFICINA</option>
+            <option value="NO APLICA">NO APLICA</option>         
+        </select>   
+
+        <!-- Campo para seleccionar el motivo de atención parcial -->
+        <label for="motivo">Atención Parcial</label>
+        <select id="atencionParcialMotivo" class="controls" name="Motivo">
+            <option value="0">Selecione un motivo</option>
+            <option value="CAIDA NUEVO SISTEMA DE IDENTIFICACIÓN">CAIDA NUEVO SISTEMA DE IDENTIFICACIÓN</option>
+            <option value="CAIDA SISTEMA DE POSESIONES EFECTIVAS">CAIDA SISTEMA DE POSESIONES EFECTIVAS</option>
+            <option value="CAIDA SISTEMA REGISTRO CIVIL(INSCRIPCIONES,MATRIMONIOS,AUC)">CAIDA SISTEMA REGISTRO CIVIL(INSCRIPCIONES,MATRIMONIOS,AUC)</option>
+            <option value="CAIDA SISTEMA DE VEHÍCULOS">CAIDA SISTEMA DE VEHÍCULOS</option>
+            <option value="SIN ENLACE/ PROBLEMAS COMUNICACIÓN / INTERNET">SIN ENLACE/ PROBLEMAS COMUNICACIÓN / INTERNET</option>
+            <option value="SIN ELECTRICIDAD">SIN ELECTRICIDAD</option>
+            <option value="NO APLICA">NO APLICA</option>
+        </select>  
+
+        <!-- Campo para ingresar observaciones -->
+        <label for="observacion">Observación</label>
+        <input class="controls" type="text" name="observacion" id="observacion" placeholder="Observación">
+
+        <!-- Botón para enviar el formulario -->
+        <a href="http://localhost:8080/sigformulario" id="siguienteBtn" class="botons">Enviar</a>
+    </section>
+
+    <!-- Enlace a los archivos JavaScript -->
+    <script src="/js/inicio.js"></script>
+    <script src="/js/formulario.js"></script>
+</body>
+</html>

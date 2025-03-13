@@ -1,0 +1,509 @@
+* {
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho y alto total de los elementos */
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el padding predeterminado de todos los elementos */
+    font-family: "Poppins", sans-serif; /* Establece la fuente predeterminada para todos los elementos */
+}
+
+/* Variables CSS */
+:root {
+    --color-bg: #aed6f1; /* Color de fondo principal */
+    --color-surface: #2980b9; /* Color de superficie */
+    --color-border: #9A9EB2; /* Color de borde */
+    --color-text-primary: #000; /* Color de texto principal */
+    --color-text-secondary: #3F435D; /* Color de texto secundario */
+    --color-tooltip-bg: #2A2E33; /* Color de fondo de los tooltips */
+    --color-tooltip-text: #fff; /* Color de texto de los tooltips */
+    --shadow-border: rgba(0, 0, 0, 0.1); /* Sombra para los bordes */
+    --user-bg-color: #FAFAFC; /* Color de fondo personalizado */
+    --sidebar-width: 20rem; /* Ancho de la barra lateral */
+}
+
+.contenedor-principal {
+    width: 100%; /* El contenedor principal ocupa el 100% del ancho disponible */
+    max-width: 1600px; /* Ancho máximo del contenedor principal */
+    display: flex; /* Usa flexbox para el diseño del contenedor */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
+    padding: 20px; /* Padding interno del contenedor */
+    gap: 20px; /* Espacio entre los elementos hijos */
+    transform: translateX(26%); /* Mueve el contenedor 26% hacia la derecha */
+}
+
+.filtros {
+    display: flex; /* Usa flexbox para el diseño del contenedor de filtros */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    margin-top: 70px; /* Margen superior de 70px */
+    gap: 10px; /* Espacio entre los elementos hijos */
+    padding: 10px; /* Padding interno del contenedor */
+    background-color: var(--user-bg-color); /* Color de fondo del contenedor de filtros */
+    border: 1px solid var(--color-border); /* Borde del contenedor de filtros */
+    border-radius: 4px; /* Bordes redondeados del contenedor de filtros */
+    width: 100%; /* El contenedor de filtros ocupa el 100% del ancho disponible */
+    max-width: 1200px; /* Ancho máximo del contenedor de filtros */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
+    background-color: #aed6f1; /* Color de fondo del contenedor de filtros */
+    border: 1px solid #aed6f1; /* Borde del contenedor de filtros */
+}
+
+.tabla-contenedor {
+    width: 100%; /* El contenedor de la tabla ocupa el 100% del ancho disponible */
+    overflow-x: auto; /* Añade desplazamiento horizontal si el contenido excede el ancho */
+    margin-top: 20px; /* Margen superior de 20px */
+}
+
+table {
+    width: 100%; /* La tabla ocupa el 100% del contenedor */
+    border-collapse: collapse; /* Colapsa los bordes de la tabla */
+    background-color: white; /* Color de fondo de la tabla */
+    border-radius: 7px; /* Bordes redondeados de la tabla */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra de la tabla */
+}
+
+th, td {
+    padding: 13px; /* Padding interno de las celdas */
+    text-align: left; /* Alinea el texto a la izquierda */
+    border-bottom: 1px solid var(--color-border); /* Borde inferior de las celdas */
+}
+
+thead {
+    background-color: #2e86c1; /* Color de fondo del encabezado de la tabla */
+    color: white; /* Color de texto del encabezado de la tabla */
+}
+
+th {
+    font-weight: 600; /* Peso de fuente del encabezado de la tabla */
+}
+
+/* Estilos para el select */
+.controls {
+    width: 150px; /* Ancho del control select */
+    padding: 8px; /* Padding interno del control select */
+    border: 1px solid var(--color-border); /* Borde del control select */
+    border-radius: 4px; /* Bordes redondeados del control select */
+    font-family: 'calibri'; /* Fuente del control select */
+    font-size: 16px; /* Tamaño de fuente del control select */
+    background-color: white; /* Color de fondo del control select */
+    color: #333; /* Color de texto del control select */
+}
+
+/* Estilos para el input de fecha */
+input[type="date"] {
+    width: 150px; /* Ancho del input de fecha */
+    padding: 8px; /* Padding interno del input de fecha */
+    border: 1px solid var(--color-border); /* Borde del input de fecha */
+    border-radius: 4px; /* Bordes redondeados del input de fecha */
+    font-family: 'calibri'; /* Fuente del input de fecha */
+    font-size: 16px; /* Tamaño de fuente del input de fecha */
+    background-color: var(--user-bg-color); /* Color de fondo del input de fecha */
+    color: var(--color-text-primary); /* Color de texto del input de fecha */
+}
+
+/* Estilos para el botón */
+button {
+    width: 100px; /* Ancho del botón */
+    padding: 8px 16px; /* Padding interno del botón */
+    background-color: var(--color-surface); /* Color de fondo del botón */
+    color: white; /* Color de texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de fuente del botón */
+}
+
+button:hover {
+    background-color: #153b7e; /* Color de fondo del botón al pasar el cursor */
+    color: black; /* Color de texto del botón al pasar el cursor */
+}
+
+/* Estilos para los labels */
+label {
+    font-size: 16px; /* Tamaño de fuente del label */
+    font-family: 'calibri'; /* Fuente del label */
+    color: #333; /* Color de texto del label */
+    display: inline-block; /* El label se comporta como un elemento en línea */
+    white-space: nowrap; /* Evita que el texto del label se divida en varias líneas */
+}
+
+/*inicio*/
+
+* {
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho y alto total de los elementos */
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el padding predeterminado de todos los elementos */
+    font-family: "Poppins", sans-serif; /* Establece la fuente predeterminada para todos los elementos */
+}
+:root {
+    --color-bg: #aed6f1; /* Color de fondo principal */
+    --color-surface: #2980b9; /* Color de superficie */
+    --color-border: #9A9EB2; /* Color de borde */
+    --color-text-primary: #000; /* Color de texto principal */
+    --color-text-secondary: #3F435D; /* Color de texto secundario */
+    --color-tooltip-bg: #2A2E33; /* Color de fondo de los tooltips */
+    --color-tooltip-text: #fff; /* Color de texto de los tooltips */
+    --shadow-border: rgba(0, 0, 0, 0.1); /* Sombra para los bordes */
+    --user-bg-color: #FAFAFC; /* Color de fondo personalizado */
+    --sidebar-width: 20rem; /* Ancho de la barra lateral */
+}
+/* Body */
+body {
+    display: flex; /* Usa flexbox para el diseño del cuerpo */
+    width: 100%; /* El cuerpo ocupa el 100% del ancho disponible */
+    height: 100vh; /* El cuerpo ocupa el 100% de la altura de la ventana */
+    background-color: var(--color-bg); /* Color de fondo del cuerpo */
+}
+
+.sidebar {
+    border-right: 2px solid #eaf2f8; /* Borde derecho de la barra lateral */
+    position: fixed; /* Posición fija de la barra lateral */
+    display: flex; /* Usa flexbox para el diseño de la barra lateral */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: left; /* Alinea los elementos hijos a la izquierda */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    width: var(--sidebar-width); /* Ancho de la barra lateral */
+    height: 100%; /* La barra lateral ocupa el 100% de la altura de la ventana */
+    padding: 1.4rem 1rem 0 1rem; /* Padding interno de la barra lateral */
+    background-color: var(--color-surface); /* Color de fondo de la barra lateral */
+    box-shadow: 1px 0 10px var(--shadow-border); /* Sombra de la barra lateral */
+    transition: width 0.5s ease; /* Transición suave del ancho de la barra lateral */
+    z-index: 1000; /* Asegura que la barra lateral esté por encima de otros elementos */
+}
+
+.sidebar.minimize {
+    width: 6rem; /* Ancho reducido de la barra lateral cuando está minimizada */
+}
+
+/*heard*/
+
+.header {
+    width: 100%; /* El encabezado ocupa el 100% del ancho disponible */
+}
+/*menu boton*/
+
+.menu-btn i {
+    font-size: 1.5rem; /* Tamaño de fuente del ícono del botón de menú */
+    color: white; /* Color del ícono del botón de menú */
+}
+
+/* brand */
+.brand {
+    width: 100%; /* La marca ocupa el 100% del ancho disponible */
+    display: flex; /* Usa flexbox para el diseño de la marca */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    gap: 0.7rem; /* Espacio entre los elementos hijos */
+    padding: 0.455rem; /* Padding interno de la marca */
+    margin-bottom: 1.8rem; /* Margen inferior de la marca */
+    overflow: hidden; /* Oculta el contenido desbordado */
+}
+
+.brand img {
+    border: 3px solid white; /* Borde blanco de la imagen de la marca */
+    width: 9rem; /* Ancho de la imagen de la marca */
+    margin-left: -0.3rem; /* Margen izquierdo negativo de la imagen de la marca */
+}
+
+.brand span {
+    font-size: 1.1rem; /* Tamaño de fuente del texto de la marca */
+    font-weight: 600; /* Peso de fuente del texto de la marca */
+    color: white; /* Color del texto de la marca */
+}
+
+/*menu container*/
+.menu-container {
+    display: flex; /* Usa flexbox para el diseño del contenedor del menú */
+    width: 100%; /* El contenedor del menú ocupa el 100% del ancho disponible */
+    height: 100%; /* El contenedor del menú ocupa el 100% de la altura disponible */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
+    padding-right: 0.5rem; /* Padding derecho del contenedor del menú */
+}
+
+/* search */
+.search {
+    display: flex; /* Usa flexbox para el diseño del contenedor de búsqueda */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    width: calc(100% - 1rem); /* El contenedor de búsqueda ocupa el 100% del ancho disponible menos 1rem */
+    padding: 0.5rem 0; /* Padding interno del contenedor de búsqueda */
+    margin-bottom: 1.2rem; /* Margen inferior del contenedor de búsqueda */
+    border-radius: 0.3rem; /* Bordes redondeados del contenedor de búsqueda */
+    box-shadow: 0 0 0 1px; /* Sombra del contenedor de búsqueda */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el contenedor de búsqueda */
+    transition: box-shadow 0.5s ease; /* Transición suave de la sombra del contenedor de búsqueda */
+    margin-left: 1rem; /* Margen izquierdo del contenedor de búsqueda */
+    color: white; /* Color del texto del contenedor de búsqueda */
+}
+
+.search:hover {
+    box-shadow: 0 0 0 1px; /* Sombra del contenedor de búsqueda al pasar el cursor */
+    color: white; /* Color del texto del contenedor de búsqueda al pasar el cursor */
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none; /* Elimina la apariencia predeterminada del botón de cancelación de búsqueda */
+    height: 16px; /* Altura del botón de cancelación de búsqueda */
+    width: 16px; /* Ancho del botón de cancelación de búsqueda */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>') no-repeat center center; /* Imagen de fondo del botón de cancelación de búsqueda */
+}
+
+.search i {
+    font-size: 1.35rem; /* Tamaño de fuente del ícono de búsqueda */
+    color: white; /* Color del ícono de búsqueda */
+    padding: 0 0.8rem; /* Padding interno del ícono de búsqueda */
+    margin-left: -0.3rem; /* Margen izquierdo negativo del ícono de búsqueda */
+}
+
+.search:hover i {
+    color: white; /* Color del ícono de búsqueda al pasar el cursor */
+}
+
+input::placeholder {
+    color: white; /* Color del texto del placeholder */
+}
+
+.search input {
+    width: 70%; /* El input de búsqueda ocupa el 70% del ancho disponible */
+    border: none; /* Sin borde */
+    outline: none; /* Sin contorno */
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Color del texto del input de búsqueda */
+}
+
+/*menu*/
+.menu{
+    width: 100%; /* El menú ocupa el 100% del ancho disponible */
+    display: flex; /* Usa flexbox para el diseño del menú */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    gap: 0.5rem; /* Espacio entre los elementos hijos */
+    color: white; /* Color del texto del menú */
+}
+
+.menu .menu-item{
+    position: relative; /* Posición relativa para permitir posicionamiento absoluto de elementos hijos */
+    list-style: none; /* Elimina el estilo de lista predeterminado */
+    overflow: hidden; /* Oculta el contenido desbordado */
+}
+
+.menu .menu-link{
+    display: flex; /* Usa flexbox para el diseño del enlace del menú */
+    padding: 0.55rem 0; /* Padding interno del enlace del menú */
+    color: white; /* Color del texto del enlace del menú */
+    text-decoration: none; /* Elimina la subrayado del enlace */
+    border-radius: 0.3rem; /* Bordes redondeados del enlace del menú */
+    margin-left: 2rem; /* Margen izquierdo del enlace del menú */
+}
+
+.menu-item:hover .menu-link, 
+.sub-menu .sub-menu-link:hover{
+    color: var(--color-text-primary); /* Color del texto del enlace al pasar el cursor */
+    background-color: var(--color-bg); /* Color de fondo del enlace al pasar el cursor */
+}
+
+.menu .menu-link i{
+    font-size: 1.35rem; /* Tamaño de fuente del ícono del enlace del menú */
+    padding: 0 0.83rem; /* Padding interno del ícono del enlace del menú */
+}
+
+.menu-link i:last-child{
+    margin-left: auto; /* Margen izquierdo automático para alinear el ícono al final */
+}
+
+.menu-item.sub-menu-toggle .menu-link i:last-child{
+    transform: rotate(180deg); /* Rota el ícono 180 grados */
+}
+
+.menu-item.sub-menu-toggled .menu-link i:last-child {
+    transform: rotate(180deg); /* Rota el ícono 180 grados */
+    transition: transform 0.3s ease; /* Transición suave de la rotación del ícono */
+}
+
+.menu-link span{
+    font-size: 0.8rem; /* Tamaño de fuente del texto del enlace del menú */
+    font-weight: 500; /* Peso de fuente del texto del enlace del menú */
+}
+
+/*sub-menu*/
+.sub-menu{
+    height: 0; /* Altura inicial del submenú */
+    transition: all 0.3s ease; /* Transición suave de todas las propiedades */
+    margin-left: 4.5rem; /* Margen izquierdo del submenú */
+}
+
+.sub-menu .sub-menu-link{
+    display: flex; /* Usa flexbox para el diseño del enlace del submenú */
+    margin-left: 0rem; /* Sin margen izquierdo */
+    padding: 0.55rem 0.50rem; /* Padding interno del enlace del submenú */
+    font-size: 0.75rem; /* Tamaño de fuente del texto del enlace del submenú */
+    font-weight: 500; /* Peso de fuente del texto del enlace del submenú */
+    color: white; /* Color del texto del enlace del submenú */
+    text-decoration: none; /* Elimina la subrayado del enlace */
+    border-radius: 0.3rem; /* Bordes redondeados del enlace del submenú */
+}
+
+.sub-menu::before{
+    content:''; /* Contenido vacío antes del submenú */
+    position: absolute; /* Posición absoluta para el pseudo-elemento */
+    height: 100%; /* Altura del pseudo-elemento */
+    width: 0.07rem; /* Ancho del pseudo-elemento */
+    margin-left: -0.9rem; /* Margen izquierdo negativo del pseudo-elemento */
+    background-color: var(--color-border); /* Color de fondo del pseudo-elemento */
+}
+
+.sidebar.minimize .menu .menu-link {
+    margin-left: 1rem; /* Margen izquierdo reducido del enlace del menú cuando la barra lateral está minimizada */
+}
+
+.barra-superior {
+    border-bottom: 2px solid #eaf2f8; /* Borde inferior de la barra superior */
+    position: fixed; /* Posición fija de la barra superior */
+    top: 0px; /* Posición superior de la barra superior */
+    left: 320px; /* Posición izquierda de la barra superior */
+    right: 0; /* Posición derecha de la barra superior */
+    max-width: calc(100% - 320px); /* Ancho máximo de la barra superior */
+    background: #2e86c1; /* Color de fondo de la barra superior */
+    color: white; /* Color del texto de la barra superior */
+    padding: 30px 20px; /* Padding interno de la barra superior */
+    display: flex; /* Usa flexbox para el diseño de la barra superior */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra de la barra superior */
+    z-index: 1000; /* Asegura que la barra superior esté por encima de otros elementos */
+}
+
+.info-usuario {
+    display: flex; /* Usa flexbox para el diseño del contenedor de información del usuario */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    margin-left: auto; /* Margen izquierdo automático para alinear el contenedor al final */
+    margin-top: -5px; /* Margen superior negativo del contenedor de información del usuario */
+}
+
+.nombre-completo span {
+    margin-right: 200px; /* Margen derecho del span */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
+    display: flex; /* Usa flexbox para el diseño del span */
+    margin-top: -20px; /* Margen superior negativo del span */
+}
+
+.usuario {
+    font-size: 1rem; /* Tamaño de fuente del texto del usuario */
+    margin-bottom: 16px; /* Margen inferior del texto del usuario */
+}
+
+.nombre {
+    font-size: 1rem; /* Tamaño de fuente del texto del nombre */
+    margin-bottom: 16px; /* Margen inferior del texto del nombre */
+    margin-top: 16px; /* Margen superior del texto del nombre */
+}
+
+.fecha {
+    font-size: 1rem; /* Tamaño de fuente del texto de la fecha */
+    font-weight: normal; /* Peso de fuente normal del texto de la fecha */
+    margin-bottom: -20px; /* Margen inferior negativo del texto de la fecha */
+}
+
+.container {
+    position: absolute; /* Posición absoluta del contenedor */
+    top: 100px; /* Posición superior del contenedor */
+    left: var(--sidebar-width); /* Posición izquierda del contenedor */
+    right: 0; /* Posición derecha del contenedor */
+    padding: 20px; /* Padding interno del contenedor */
+    margin-top: 0; /* Margen superior del contenedor */
+    max-width: 1000px; /* Ancho máximo del contenedor */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
+}
+
+.recordatorio-section {
+    background: white; /* Color de fondo de la sección de recordatorios */
+    padding: 10px; /* Padding interno de la sección de recordatorios */
+    border-radius: 10px; /* Bordes redondeados de la sección de recordatorios */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra de la sección de recordatorios */
+    max-height: 70vh; /* Altura máxima de la sección de recordatorios */
+    overflow-y: auto; /* Añade desplazamiento vertical si el contenido excede la altura máxima */
+}
+
+.recordatorio-list {
+    list-style: none; /* Elimina el estilo de lista predeterminado */
+    padding: 0; /* Elimina el padding predeterminado */
+    margin: 20px 0; /* Margen superior e inferior de la lista de recordatorios */
+    display: flex; /* Usa flexbox para el diseño de la lista de recordatorios */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: left; /* Alinea los elementos hijos a la izquierda */
+}
+
+.recordatorio-list li {
+    background: #f0f0f0; /* Color de fondo de los elementos de la lista de recordatorios */
+    border-radius: 10px; /* Bordes redondeados de los elementos de la lista de recordatorios */
+    padding: 10px 15px; /* Padding interno de los elementos de la lista de recordatorios */
+    margin-bottom: 10px; /* Margen inferior de los elementos de la lista de recordatorios */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra de los elementos de la lista de recordatorios */
+    display: flex; /* Usa flexbox para el diseño de los elementos de la lista de recordatorios */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    word-wrap: break-word; /* Permite que el texto se ajuste dentro del contenedor */
+    white-space: normal; /* Permite que el texto se ajuste dentro del contenedor */
+    max-width: 700px; /* Ancho máximo de los elementos de la lista de recordatorios */
+    width: 100%; /* Asegura que los elementos de la lista de recordatorios ocupen el 100% del ancho disponible */
+    position: relative; /* Añadido para posicionar el botón de eliminar */
+}
+
+.recordatorio-list li i.bxs-bell {
+    font-size: 24px; /* Ajusta el tamaño del ícono de la campanita */
+    margin-right: 10px; /* Espacio entre la campanita y el texto */
+    color: rgb(236, 236, 76); /* Cambia el color de la campanita a amarillo */
+}
+
+.recordatorio-list li span {
+    font-size: 1rem; /* Tamaño de fuente del texto */
+    color: #333; /* Color del texto */
+    flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+}
+
+.recordatorio-list li .delete-container {
+    position: absolute; /* Posición absoluta del contenedor del botón de eliminar */
+    right: -80px; /* Ajusta la posición del contenedor del botón de eliminar */
+    top: 50%; /* Centra verticalmente el contenedor del botón de eliminar */
+    transform: translateY(-50%); /* Ajusta la posición vertical del contenedor del botón de eliminar */
+}
+
+.recordatorio-list li button {
+    background-color: #e74c3c; /* Color de fondo del botón de eliminar */
+    color: white; /* Color del texto del botón de eliminar */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados del botón de eliminar */
+    padding: 5px 10px; /* Padding interno del botón de eliminar */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón de eliminar */
+}
+
+.recordatorio-list li button:hover {
+    background-color: #c0392b; /* Color de fondo del botón de eliminar al pasar el cursor */
+}
+
+.recordatorio-form {
+    display: flex; /* Usa flexbox para el diseño del formulario de recordatorios */
+    gap: 10px; /* Espacio entre los elementos del formulario */
+    margin-top: 20px; /* Margen superior del formulario */
+}
+
+.recordatorio-form input {
+    flex: 1; /* Permite que el input ocupe el espacio disponible */
+    padding: 10px; /* Padding interno del input */
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 5px; /* Bordes redondeados del input */
+    font-size: 1rem; /* Tamaño de fuente del input */
+}
+
+.recordatorio-form button {
+    padding: 10px 20px; /* Padding interno del botón */
+    border: none; /* Sin borde */
+    background-color: #2980b9; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border-radius: 5px; /* Bordes redondeados del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 1rem; /* Tamaño de fuente del botón */
+}
+
+.recordatorio-form button:hover {
+    background-color: #1f6391; /* Color de fondo del botón al pasar el cursor */
+}

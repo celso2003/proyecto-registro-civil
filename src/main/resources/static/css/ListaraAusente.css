@@ -1,0 +1,401 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');*/
+
+* {
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total de los elementos */
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el padding predeterminado de todos los elementos */
+    font-family: "Poppins", sans-serif; /* Aplica la fuente "Poppins" a todos los elementos */
+}
+
+:root {
+    --color-bg: #aed6f1; /* Color de fondo principal */
+    --color-surface: #2980b9; /* Color de superficie */
+    --color-border: #9A9EB2; /* Color de borde */
+    --color-text-primary: #000; /* Color de texto primario */
+    --color-text-secondary: #3F435D; /* Color de texto secundario */
+    --color-tooltip-bg: #2A2E33; /* Color de fondo de los tooltips */
+    --color-tooltip-text: #fff; /* Color de texto de los tooltips */
+    --shadow-border: rgba(0, 0, 0, 0.1); /* Sombra para los bordes */
+    --user-bg-color: #FAFAFC; /* Color de fondo para el usuario */
+    --sidebar-width: 20rem; /* Ancho de la barra lateral */
+}
+/* Body */
+body {
+    display: flex; /* Utiliza flexbox para el diseño */
+    width: 100%; /* El cuerpo ocupa el 100% del ancho disponible */
+    height: 100vh; /* El cuerpo ocupa el 100% de la altura de la ventana */
+    background-color: var(--color-bg); /* Color de fondo */
+    overflow-y: hidden; /* Oculta el desplazamiento vertical */
+}
+
+.sidebar {
+    border-right: 2px solid #eaf2f8; /* Borde derecho */
+    position: relative; /* Posicionamiento relativo */
+    display: flex; /* Utiliza flexbox para el diseño */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: left; /* Alinea los elementos hijos a la izquierda */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    width: var(--sidebar-width); /* Ancho de la barra lateral */
+    min-height: 100vh; /* Altura mínima de la barra lateral */
+    padding: 1.4rem 1rem 0 1rem; /* Padding interno */
+    background-color: var(--color-surface); /* Color de fondo */
+    box-shadow: 1px 0 10px var(--shadow-border); /* Sombra */
+    transition: width 0.5s ease; /* Transición para el ancho */
+    z-index: 1000; /* Nivel de apilamiento */
+    flex-grow: 0; /* No permite que el contenedor crezca */
+    flex-shrink: 0; /* No permite que el contenedor se encoja */
+}
+
+.sidebar.minimize {
+    width: 6rem; /* Ancho reducido de la barra lateral */
+}
+
+/* Header */
+.header {
+    width: 100%; /* El encabezado ocupa el 100% del ancho disponible */
+}
+
+/* Menu button */
+.menu-btn i {
+    font-size: 1.5rem; /* Tamaño de la fuente */
+    color: white; /* Color del texto */
+}
+
+/* Brand */
+.brand {
+    width: 100%; /* El contenedor ocupa el 100% del ancho disponible */
+    display: flex; /* Utiliza flexbox para el diseño */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    gap: 0.7rem; /* Espacio entre los elementos hijos */
+    padding: 0.455rem; /* Padding interno */
+    margin-bottom: 1.8rem; /* Margen inferior */
+    overflow: hidden; /* Oculta el contenido desbordado */
+}
+
+.brand img {
+    border: 3px solid white; /* Borde */
+    width: 9rem; /* Ancho de la imagen */
+    margin-left: -0.3rem; /* Margen izquierdo negativo */
+}
+
+.brand span {
+    font-size: 1.1rem; /* Tamaño de la fuente */
+    font-weight: 600; /* Peso de la fuente */
+    color: white; /* Color del texto */
+}
+
+/* Menu container */
+.menu-container {
+    display: flex; /* Utiliza flexbox para el diseño */
+    width: 100%; /* El contenedor ocupa el 100% del ancho disponible */
+    height: 100%; /* El contenedor ocupa el 100% de la altura */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
+    padding-right: 0.5rem; /* Padding derecho */
+}
+
+/* Search */
+.search {
+    display: flex; /* Utiliza flexbox para el diseño */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    width: calc(100% - 1rem); /* Ancho calculado */
+    padding: 0.5rem 0; /* Padding interno */
+    margin-bottom: 1.2rem; /* Margen inferior */
+    border-radius: 0.3rem; /* Bordes redondeados */
+    box-shadow: 0 0 0 1px; /* Sombra */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el elemento */
+    transition: box-shadow 0.5s ease; /* Transición para la sombra */
+    margin-left: 1rem; /* Margen izquierdo */
+    color: white; /* Color del texto */
+}
+
+.search:hover {
+    box-shadow: 0 0 0 1px; /* Sombra al pasar el cursor */
+    color: white; /* Color del texto al pasar el cursor */
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none; /* Elimina la apariencia predeterminada */
+    height: 16px; /* Altura */
+    width: 16px; /* Ancho */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>') no-repeat center center; /* Imagen de fondo */
+}
+
+.search i {
+    font-size: 1.35rem; /* Tamaño de la fuente */
+    color: white; /* Color del texto */
+    padding: 0 0.8rem; /* Padding interno */
+    margin-left: -0.3rem; /* Margen izquierdo negativo */
+}
+
+.search:hover i {
+    color: white; /* Color del texto al pasar el cursor */
+}
+
+input::placeholder {
+    color: white; /* Color del texto del placeholder */
+}
+
+.search input {
+    width: 70%; /* Ancho */
+    border: none; /* Sin borde */
+    outline: none; /* Sin contorno */
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Color del texto */
+}
+
+.search-container {
+    display: flex; /* Utiliza flexbox para el diseño */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    justify-content: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
+    margin-bottom: 20px; /* Margen inferior */
+    gap: 20px; /* Espacio entre los elementos hijos */
+    background-color: #f8f9fa; /* Color de fondo */
+    padding: 20px; /* Padding interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.date-group {
+    display: flex; /* Utiliza flexbox para el diseño */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
+}
+
+.search-container label {
+    margin-bottom: 5px; /* Margen inferior */
+    color: #333; /* Color del texto */
+    font-weight: bold; /* Peso de la fuente */
+}
+
+.date-input {
+    padding: 10px; /* Padding interno */
+    border: 1px solid #ddd; /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 1rem; /* Tamaño de la fuente */
+}
+
+.search-button {
+    padding: 10px 20px; /* Padding interno */
+    background-color: var(--color-surface); /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 1rem; /* Tamaño de la fuente */
+    transition: background-color 0.3s ease; /* Transición para el color de fondo */
+}
+
+.search-button:hover {
+    background-color: #1f618d; /* Color de fondo al pasar el cursor */
+}
+
+.search-container label {
+    margin-right: 10px; /* Margen derecho */
+    color: black; /* Color del texto */
+    font-weight: bold; /* Peso de la fuente */
+}
+
+/*menu*/
+.menu{
+    width: 100%; /* El menú ocupa el 100% del ancho disponible */
+    display: flex; /* Utiliza flexbox para el diseño */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    gap: 0.5rem; /* Espacio entre los elementos hijos */
+    color: white; /* Color del texto */
+}
+
+.menu .menu-item{
+    position: relative; /* Posicionamiento relativo */
+    list-style: none; /* Elimina los puntos de la lista */
+    overflow: hidden; /* Oculta el contenido desbordado */
+}
+
+.menu .menu-link{
+    display: flex; /* Utiliza flexbox para el diseño */
+    padding: 0.55rem 0; /* Padding interno */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina la decoración del texto */
+    border-radius: 0.3rem; /* Bordes redondeados */
+    margin-left: 2rem; /* Margen izquierdo */
+}
+
+.menu-item:hover .menu-link, 
+.sub-menu .sub-menu-link:hover{
+    color: var(--color-text-primary); /* Color del texto al pasar el cursor */
+    background-color: var(--color-bg); /* Color de fondo al pasar el cursor */
+}
+
+.menu .menu-link i{
+    font-size: 1.35rem; /* Tamaño de la fuente */
+    padding: 0 0.83rem; /* Padding interno */
+}
+
+.menu-link i:last-child{
+    margin-left: auto; /* Margen izquierdo automático */
+}
+
+.menu-item.sub-menu-toggle .menu-link i:last-child{
+    transform: rotate(180deg); /* Rota el ícono 180 grados */
+}
+
+.menu-item.sub-menu-toggled .menu-link i:last-child {
+    transform: rotate(180deg); /* Rota el ícono 180 grados */
+    transition: transform 0.3s ease; /* Transición suave para la rotación */
+}
+
+.menu-link span{
+    font-size: 0.8rem; /* Tamaño de la fuente */
+    font-weight: 500; /* Peso de la fuente */
+}
+
+/*sub-menu*/
+.sub-menu{
+    height: 0; /* Altura inicial del sub-menú */
+    transition: all 0.3s ease; /* Transición suave para todos los cambios */
+    margin-left: 4.5rem; /* Margen izquierdo */
+}
+
+.sub-menu .sub-menu-link{
+    display: flex; /* Utiliza flexbox para el diseño */
+    margin-left: 0rem; /* Sin margen izquierdo */
+    padding: 0.55rem 0.50rem; /* Padding interno */
+    font-size: 0.75rem; /* Tamaño de la fuente */
+    font-weight: 500; /* Peso de la fuente */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina la decoración del texto */
+    border-radius: 0.3rem; /* Bordes redondeados */
+}
+
+.sub-menu::before {
+    content: ''; /* Contenido vacío */
+    position: absolute; /* Posicionamiento absoluto */
+    height: 100%; /* Altura completa */
+    width: 0.07rem; /* Ancho */
+    margin-left: -0.85rem; /* Margen izquierdo negativo */
+    background-color: var(--color-border); /* Color de fondo */
+}
+
+.sidebar.minimize .menu .menu-link {
+    margin-left: 1rem; /* Margen izquierdo reducido */
+}
+
+.barra-superior {
+    border-bottom: 2px solid #eaf2f8; /* Borde inferior */
+    position: fixed; /* Posición fija */
+    top: 0px; /* Posición superior */
+    left: 320px; /* Posición izquierda */
+    right: 0; /* Posición derecha */
+    max-width: calc(100% - 320px); /* Ancho máximo calculado */
+    background: #2e86c1; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 30px 20px; /* Padding interno */
+    display: flex; /* Utiliza flexbox para el diseño */
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra */
+    z-index: 1000; /* Nivel de apilamiento */
+}
+
+.info-usuario {
+    display: flex; /* Utiliza flexbox para el diseño */
+    align-items: center; /* Alinea los elementos hijos al centro verticalmente */
+    margin-left: auto; /* Margen izquierdo automático */
+    margin-top: -5px; /* Margen superior negativo */
+}
+
+.nombre-completo span {
+    margin-right: 200px; /* Margen derecho */
+    flex-direction: column; /* Los elementos hijos se organizan en una columna */
+    align-items: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
+    display: flex; /* Utiliza flexbox para el diseño */
+    margin-top: -20px; /* Margen superior negativo */
+}
+
+.usuario {
+    font-size: 1rem; /* Tamaño de la fuente */
+    margin-bottom: 16px; /* Margen inferior */
+}
+
+.nombre{
+    font-size: 1rem; /* Tamaño de la fuente */
+    margin-bottom:16px; /* Margen inferior */
+    margin-top: 16px; /* Margen superior */
+}
+
+.fecha {
+    font-size: 1rem; /* Tamaño de la fuente */
+    font-weight: normal; /* Peso de la fuente */
+    margin-bottom: -20px; /* Margen inferior negativo */
+}
+
+.container {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Posición superior */
+    left: var(--sidebar-width); /* Posición izquierda */
+    right: 0; /* Posición derecha */
+    padding: 100px; /* Padding interno */
+    margin-top: 900px; /* Margen superior */
+}
+
+.container-ausente h4 {
+    font-size: 30px; /* Tamaño de la fuente del título */
+    margin-bottom: 20px; /* Margen inferior */
+    text-align: center; /* Alineación del texto */
+    color: black; /* Color del texto */
+}
+
+.table-container {
+    width: 96%; /* Ancho del contenedor */
+    background: white; /* Color de fondo */
+    padding: 10px 50px; /* Padding interno */
+    margin: 0; /* Sin margen */
+    margin-top: 3rem; /* Margen superior */
+    border-radius: 4px; /* Bordes redondeados */
+    color: white; /* Color del texto */
+    height: 600px; /* Altura */
+    position: relative; /* Posicionamiento relativo */
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    overflow-y: scroll; /* Permite el desplazamiento vertical */
+    font-size: 0.8rem; /* Tamaño de la fuente */
+    margin-top: 80px; /* Margen superior */
+    margin-left: 10px; /* Margen izquierdo */
+}
+
+.table-ausentes {
+    width: 100%; /* Ancho de la tabla */
+    border-collapse: collapse; /* Colapsa los bordes de la tabla */
+    margin-top: 20px; /* Margen superior */
+    table-layout: fixed; /* Diseño de tabla fijo */
+}
+
+.table-ausentes th, .table-ausentes td {
+    border: 1px solid #ddd; /* Borde */
+    padding: 1rem; /* Padding interno */
+    text-align: center; /* Alineación del texto */
+    vertical-align: middle; /* Alineación vertical */
+    white-space: normal; /* Permite que el texto se ajuste dentro del contenedor */
+    overflow: hidden; /* Oculta el contenido desbordado */
+    text-overflow: ellipsis; /* Añade puntos suspensivos al texto desbordado */
+    font-size: 0.6rem; /* Tamaño de la fuente */
+    max-width: 150px; /* Ancho máximo */
+    word-wrap: break-word; /* Permite que el texto se ajuste dentro del contenedor */
+    color: black; /* Color del texto */
+}
+
+.table-ausentes th {
+    background: var(--color-surface); /* Color de fondo */
+    color: var(--color-white); /* Color del texto */
+}
+
+.table-ausentes tbody tr:nth-child(even) {
+    background-color: #f1f1f1; /* Color de fondo para las filas pares */
+}
+
+.table-ausentes tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* Color de fondo para las filas impares */
+}
+
+.table-ausentes tr:hover {
+    background-color: #f1f1f1; /* Color de fondo al pasar el cursor */
+}

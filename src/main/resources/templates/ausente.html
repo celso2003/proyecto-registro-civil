@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ausente</title>
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="/css/ausente.css">
+    <!-- Enlace a los iconos de Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body> 
+
+    <!-- Barra superior con información del usuario -->
+    <div class="barra-superior">
+        <div class="info-usuario">
+            <span class="nombre-completo">
+                <span class="usuario"> Usuario:</span>
+                <span class="nombre"> Nombre:</span>
+                <span class="fecha"> Fecha:</span>
+            </span>
+        </div>
+    </div>
+        
+    <!-- Barra lateral (sidebar) -->
+    <div class="sidebar" id="sidebar">
+        <div class="header">
+            <!-- Botón del menú -->
+            <div class="menu-btn" id="menu-btn"></div> 
+            <!-- Marca con el logo y el nombre de la institución -->
+            <div class="brand">
+                <img src="/imagenes/LogoRegistroCivil.png" alt="logo">
+                <span>Registro Civil De Ñuble</span>
+            </div>
+        </div>
+        
+        <!-- Contenedor del menú -->
+        <div class="menu-container">
+            <!-- Barra de búsqueda -->
+            <div class="search">
+                <i class='bx bx-search'></i>
+                <input type="search" placeholder="Buscar...">
+            </div>
+            <!-- Menú de navegación -->
+            <ul class="menu">
+                <!-- Elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Inicio</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/inicio" class="sub-menu-link">Inicio<a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Informe Diario</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/formulario" class="sub-menu-link">Informe diario</a></li>
+                        <li><a href="/DotacionÑuble" class="sub-menu-link">Informe Ñuble</a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Registro Ausente</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/ausente" class="sub-menu-link">Ausente</a></li>
+                        <li><a href="/ListaraAusente" class="sub-menu-link"> Listar Ausente</a></li>
+                    </ul>
+                </li>
+                <!-- Otro elemento del menú con submenú -->
+                <li class="menu-item menu-item-dropdown">
+                    <a href="#" class="menu-link">
+                        <i class='bx bx-folder'></i>
+                        <span>Dotacion</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="/Dotacion" class="sub-menu-link">Dotacion Funcionario<a></li>
+                        <li><a href="/dotacionTrabajo" class="sub-menu-link">Dotacion Trabajo<a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Formulario de ausente fuera de la barra lateral -->
+    <div class="container-ausente">
+        <form class="formulario-ausente" id="ausenteForm">
+            <h4 class="Formulario ausentes">Formulario Ausentes</h4>
+
+            <!-- Campo para seleccionar la opción de búsqueda -->
+            <label for="searchOption">Elija la opción para buscar al funcionario:</label>
+            <select id="searchOption" name="searchOption" onchange="toggleSearchFields()">
+                <option value="run">Buscar por RUN</option>
+                <option value="apellidos">Buscar por Apellidos</option>
+            </select><br><br>
+
+            <!-- Campo de búsqueda por RUN -->
+            <div id="searchByRun">
+                <label for="run">RUN</label>
+                <input class="controls" type="text" name="run" id="run">
+            </div>
+
+            <!-- Campo de búsqueda por Apellidos -->
+            <div id="searchByApellidos" style="display: none;">
+                <label for="apellidos">Apellidos</label>
+                <input class="controls" type="text" name="apellidos" id="apellidos">
+                <div id="resultadosBusqueda" class="resultados-busqueda"></div>
+                <label for="runListar">RUN</label>
+                <input class="controls" type="text" name="runListar" id="runListar" readonly>
+            </div>
+
+            <!-- Campos de información del funcionario -->
+            <label for="nombre">Nombre</label>
+            <input class="controls" type="text" name="nombre" id="nombre" required readonly>
+
+            <label for="apellidoPaterno">Apellido Paterno</label>
+            <input class="controls" type="text" name="apellidoPaterno" id="apellidoPaterno" required readonly>
+
+            <label for="apellidoMaterno">Apellido Materno</label>
+            <input class="controls" type="text" name="apellidoMaterno" id="apellidoMaterno" required readonly>
+
+            <label for="oficina">Oficina del funcionario</label>
+            <input class="controls" type="text" name="oficina" id="oficina" required readonly>
+
+            <!-- Campo para seleccionar el tipo de ausentismo -->
+            <label for="tipoAusentismo">Tipo de ausentismo:</label><br>
+            <select id="tipoAusentismo" name="tipoAusentismo" required onchange="mostrarOtro()">
+                <option value="licencia-medica">LICENCIA-MEDICA</option>
+                <option value="ausente">AUSENTE</option>
+                <option value="permiso">PERMISO</option>
+                <option value="teletrabajo">TELETRABAJO</option>
+                <option value="otro">OTRO</option>
+            </select><br><br>
+
+            <!-- Campo adicional para especificar otro tipo de ausentismo -->
+            <div id="otro-container" style="display: none;">
+                <label for="otro">Especifique:</label>
+                <input class="controls" type="text" name="otro" id="otro">
+            </div><br>
+
+            <!-- Campos para las fechas de inicio y fin del ausentismo -->
+            <label for="fechaInicio">Fecha de inicio</label>
+            <input class="controls" type="date" name="fechaInicio" id="fechaInicio" required>
+            
+            <label for="fechaTermino">Fecha de fin</label>
+            <input class="controls" type="date" name="fechaTermino" id="fechaTermino" required>
+            
+            <!-- Campo para observaciones -->
+            <label for="observaciones">Observacion</label>
+            <textarea class="controls" type="text" name="observaciones" id="observaciones" required></textarea>
+            
+            <!-- Botón para enviar el formulario -->
+            <input class="botons" type="submit" value="Enviar">
+        </form>
+    </div>
+        
+    <!-- Enlace al archivo JavaScript -->
+    <script src="/js/ausente.js"></script>
+    <script>
+        // Función para mostrar el campo "otro" si se selecciona la opción "otro" en el tipo de ausentismo
+        function mostrarOtro() {
+            const tipoAusentismo = document.getElementById('tipoAusentismo').value;
+            const otroContainer = document.getElementById('otro-container');
+            if (tipoAusentismo === 'otro') {
+                otroContainer.style.display = 'block';
+            } else {
+                otroContainer.style.display = 'none';
+            }
+        }
+
+        // Función para alternar los campos de búsqueda según la opción seleccionada
+        function toggleSearchFields() {
+            const searchOption = document.getElementById('searchOption').value;
+            const searchByRun = document.getElementById('searchByRun');
+            const searchByApellidos = document.getElementById('searchByApellidos');
+
+            if (searchOption === 'run') {
+                searchByRun.style.display = 'block';
+                searchByApellidos.style.display = 'none';
+            } else {
+                searchByRun.style.display = 'none';
+                searchByApellidos.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

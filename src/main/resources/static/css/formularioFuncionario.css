@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del formulario de asistencia */
+.form-asistencia {
+    display: grid; /* Usa el modelo de diseño de cuadrícula */
+
+    grid-template-rows: auto; /* Altura automática para las filas */
+    grid-template-columns: repeat(2, 1fr); /* Crea dos columnas de igual tamaño */
+    gap: 3em; /* Espaciado entre los elementos dentro del grid */
+    width: 600px; /* Ancho del formulario */
+    background: #2e86c1; /* Color de fondo azul */
+    padding: 30px; /* Espaciado interno */
+    margin-left: auto; /* Alineación automática hacia la derecha */
+    margin-right: 335px; /* Desplazamiento desde la derecha */
+    margin-top: 97px; /* Separación desde la parte superior */
+    height: 246%; /* Altura relativa al contenedor padre */
+    border-radius: 4px; /* Bordes redondeados */
+    font-family: 'calibri'; /* Tipo de fuente */
+    color: white; /* Color del texto */
+}
+
+/* Estilos para el encabezado dentro del formulario */
+.form-asistencia h4 {
+    grid-column: span 2; /* Hace que el título ocupe las dos columnas del grid */
+    font-size: 22px; /* Tamaño de fuente */
+    display: block; /* Se muestra como bloque */
+    margin-bottom: 20px; /* Espaciado debajo del título */
+    text-align: center; /* Centra el texto horizontalmente */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    justify-content: center; /* Asegura alineación central (aunque no afecta inline elements) */
+    margin-top: 20px; /* Espaciado superior */
+    margin-left: 50px; /* Desplazamiento desde la izquierda */
+    align-items: center; /* Intenta centrar verticalmente (no aplica en un bloque sin flexbox) */
+}
+
+/* Estilos para las etiquetas (labels) */
+.form-asistencia label {
+    display: block; /* Se muestra en bloque, ocupando toda la línea */
+    grid-column: 1; /* Ubica los labels en la primera columna del grid */
+    font-size: 18px; /* Tamaño de fuente */
+    justify-content: space-between; /* No tiene efecto aquí, útil en flexbox */
+    gap: 50px; /* No tiene efecto en un bloque, pero si estuviera en flexbox funcionaría */
+    margin-top: 40px; /* Espaciado superior para separar los labels */
+}
+
+/* Estilos para los campos de entrada (inputs) */
+.form-asistencia .controls {
+    display: block; /* Se muestra como bloque */
+    grid-column: 2; /* Ubica los inputs en la segunda columna del grid */
+    width: 70%; /* Ocupa el 70% del ancho disponible */
+    background: white; /* Fondo blanco */
+    border-radius: 4px; /* Bordes redondeados */
+    border: 1px solid #1f53c5; /* Borde azul */
+    font-family: 'calibri'; /* Tipo de fuente */
+    margin-left: 250px; /* Desplazamiento hacia la derecha (puede desbordar su contenedor) */
+    margin-right: auto; /* Alineación automática en la derecha */
+    align-self: center; /* Centra verticalmente dentro del grid */
+    padding: 5px; /* Espaciado interno */
+    margin-top: -37px; /* Desplazamiento negativo hacia arriba (puede generar problemas de alineación) */
+    font-size: 20px; /* Tamaño de fuente */
+    color: rgba(39, 37, 37, 0.836); /* Color del texto */
+    gap: 50px; /* No tiene efecto aquí */
+}
+
+/* Estilos para el texto de los placeholders en los inputs */
+.form-asistencia .controls::placeholder {
+    color: rgba(39, 37, 37, 0.836); /* Color del texto del placeholder */
+    opacity: 1; /* Asegura que el placeholder no sea transparente */
+}
+
+/* Estilos para el botón de envío */
+.botons {
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #ffffff; /* Color de fondo blanco */
+    color: rgb(31, 30, 30); /* Color del texto */
+    text-align: center; /* Centra el texto */
+    text-decoration: none; /* Elimina el subrayado si fuera un enlace */
+    border: none; /* Elimina el borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar por encima */
+    font-size: 16px; /* Tamaño de fuente */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 3,5%; /* Parece un error, debe ser `3.5%` o un valor en `px` */
+    margin-top: 1349px; /* Parece un valor excesivo, podría desbordar el diseño */
+    margin-bottom: 10px; /* Espaciado inferior */
+    margin-left: -5px; /* Desplazamiento hacia la izquierda */
+    margin-right: auto; /* Alineación automática en la derecha */
+    grid-column: 2; /* Ubica el botón en la segunda columna del grid */
+}
+
+/* Estilos cuando el botón es presionado */
+.botons:hover {
+    background-color: #e3eef8d7; /* Cambio de color al pasar el cursor */
+}
